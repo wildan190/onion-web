@@ -30,6 +30,8 @@ const priceValidUntil = new Date();
 priceValidUntil.setDate(priceValidUntil.getDate() + 14);
 const priceValidUntilStr = priceValidUntil.toISOString().slice(0, 10);
 
+const whatsappHref = 'https://wa.me/6281233624549';
+
 const priceStructuredData = {
 	'@context': 'https://schema.org',
 	'@graph': [
@@ -106,12 +108,42 @@ const priceStructuredData = {
 			</table>
 		</div>
 
-		<div class="price-cta">
-			<p class="price-cta__text">
-				Ingin membeli bawang merah langsung dari supplier tangan pertama dengan harga grosir? Kunjungi halaman ini:
-			</p>
-			<a class="price-cta__link" href="/">Jual Bawang Merah Grosir</a>
-		</div>
+		<section class="price-cta" aria-labelledby="price-cta-title">
+			<div class="price-cta__stripe" aria-hidden="true"></div>
+			<div class="price-cta__body">
+				<p class="price-cta__eyebrow">mitrabawang.id</p>
+				<h2 id="price-cta-title" class="price-cta__title">Belanja grosir dari supplier tangan pertama</h2>
+				<p class="price-cta__text">
+					Harga di atas adalah referensi per kg. Untuk order grosir, variasi grade, dan jadwal kirim — hubungi kami
+					atau mulai dari halaman utama.
+				</p>
+				<div class="price-cta__actions">
+					<a class="price-cta__btn price-cta__btn--primary" href="/">
+						<span class="price-cta__btn-main">Halaman utama &amp; info grosir</span>
+						<span class="price-cta__btn-hint">Jual bawang merah grosir · mitrabawang.id</span>
+						<svg class="price-cta__btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<path
+								d="M5 12h14m0 0l-6-6m6 6l-6 6"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</a>
+					<a class="price-cta__btn price-cta__btn--wa" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+						<svg class="price-cta__wa-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+							<path
+								d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+							></path>
+						</svg>
+						<span class="price-cta__wa-text">
+							<span class="price-cta__wa-label">Tanya harga &amp; stok</span>
+							<span class="price-cta__wa-sub">Chat WhatsApp</span>
+						</span>
+					</a>
+				</div>
+			</div>
+		</section>
 
 		<p class="price-page__back">
 			<a href="/">← Kembali ke beranda</a>
@@ -228,41 +260,163 @@ const priceStructuredData = {
 	}
 
 	.price-cta {
-		background: linear-gradient(135deg, #fffbeb 0%, #fff 55%);
-		border: 1px solid rgba(217, 119, 6, 0.22);
-		border-radius: var(--radius);
-		padding: 1.25rem 1.35rem;
-		margin-bottom: 1.5rem;
+		position: relative;
+		margin-bottom: 2rem;
+		border-radius: 16px;
+		overflow: hidden;
+		background: #fff;
+		border: 1px solid var(--color-border);
+		box-shadow: 0 4px 28px rgba(28, 25, 23, 0.07);
+	}
+
+	.price-cta__stripe {
+		height: 4px;
+		width: 100%;
+		background: linear-gradient(90deg, #9f1239 0%, #c2410c 50%, #ea580c 100%);
+	}
+
+	.price-cta__body {
+		padding: clamp(1.35rem, 4vw, 1.85rem) clamp(1.25rem, 4vw, 1.75rem);
+		background:
+			radial-gradient(ellipse 80% 60% at 100% 0%, rgba(159, 18, 57, 0.06), transparent 55%),
+			linear-gradient(180deg, #fff 0%, #fafaf9 100%);
+	}
+
+	.price-cta__eyebrow {
+		margin: 0 0 0.4rem;
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+	}
+
+	.price-cta__title {
+		margin: 0 0 0.65rem;
+		font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+		font-weight: 800;
+		line-height: 1.25;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
 	}
 
 	.price-cta__text {
-		margin: 0 0 1rem;
-		color: var(--color-text);
-		line-height: 1.6;
+		margin: 0 0 1.35rem;
+		color: var(--color-muted);
+		line-height: 1.65;
 		font-size: 1.02rem;
+		max-width: 40rem;
 	}
 
-	.price-cta__link {
-		display: inline-flex;
+	.price-cta__actions {
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	@media (min-width: 560px) {
+		.price-cta__actions {
+			grid-template-columns: 1fr 1fr;
+			align-items: stretch;
+		}
+	}
+
+	.price-cta__btn {
+		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.65rem 1.2rem;
-		font-weight: 700;
-		font-size: 0.98rem;
-		color: #fff;
-		background: var(--color-accent);
-		border-radius: 10px;
+		gap: 0.65rem;
+		padding: 1rem 1.2rem;
+		border-radius: 12px;
 		text-decoration: none;
-		transition: background 0.15s ease, transform 0.15s ease;
+		font-weight: 700;
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease,
+			background 0.15s ease,
+			border-color 0.15s ease;
+		border: 2px solid transparent;
+		min-height: 3.35rem;
+		box-sizing: border-box;
 	}
 
-	.price-cta__link:hover {
+	.price-cta__btn:active {
+		transform: scale(0.99);
+	}
+
+	.price-cta__btn--primary {
+		flex-direction: column;
+		align-items: flex-start;
+		text-align: left;
+		position: relative;
+		padding-right: 2.75rem;
+		background: var(--color-accent);
+		color: #fff;
+		box-shadow: 0 6px 20px rgba(159, 18, 57, 0.28);
+	}
+
+	.price-cta__btn--primary:hover {
 		background: #881337;
 		color: #fff;
+		box-shadow: 0 8px 26px rgba(159, 18, 57, 0.32);
 	}
 
-	.price-cta__link:active {
-		transform: scale(0.99);
+	.price-cta__btn-main {
+		font-size: 1.02rem;
+		line-height: 1.3;
+	}
+
+	.price-cta__btn-hint {
+		font-size: 0.78rem;
+		font-weight: 600;
+		opacity: 0.9;
+		line-height: 1.35;
+	}
+
+	.price-cta__btn-arrow {
+		position: absolute;
+		right: 1rem;
+		top: 50%;
+		transform: translateY(-50%);
+		flex-shrink: 0;
+		opacity: 0.95;
+	}
+
+	.price-cta__btn--wa {
+		background: #25d366;
+		color: #fff;
+		box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+		flex-direction: row;
+		justify-content: flex-start;
+		text-align: left;
+		padding-left: 1.1rem;
+	}
+
+	.price-cta__btn--wa:hover {
+		background: #1fb855;
+		color: #fff;
+		box-shadow: 0 8px 26px rgba(37, 211, 102, 0.36);
+	}
+
+	.price-cta__wa-icon {
+		flex-shrink: 0;
+	}
+
+	.price-cta__wa-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		min-width: 0;
+	}
+
+	.price-cta__wa-label {
+		font-size: 1.02rem;
+		line-height: 1.25;
+	}
+
+	.price-cta__wa-sub {
+		font-size: 0.78rem;
+		font-weight: 600;
+		opacity: 0.92;
 	}
 
 	.price-page__back {
@@ -275,7 +429,7 @@ const priceStructuredData = {
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.price-cta__link:active {
+		.price-cta__btn:active {
 			transform: none;
 		}
 	}

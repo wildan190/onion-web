@@ -1,0 +1,95 @@
+---
+/**
+ * Tombol WhatsApp mengambang (semua halaman).
+ */
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	/** Untuk teks aria-label */
+	lang?: string;
+}
+
+const { lang = 'id' } = Astro.props;
+
+const href = 'https://wa.me/6281233624549';
+const ariaLabel =
+	lang === 'en'
+		? 'Chat on WhatsApp with mitrabawang.id'
+		: 'Chat WhatsApp mitrabawang.id';
+---
+
+<a
+	class="wa-float"
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label={ariaLabel}
+>
+	<Icon name="simple-icons:whatsapp" class="wa-float__icon" aria-hidden="true" />
+</a>
+
+<style>
+	.wa-float {
+		position: fixed;
+		z-index: 60;
+		right: max(1rem, env(safe-area-inset-right, 0px));
+		bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 50%;
+		background: #25d366;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow:
+			0 4px 18px rgba(37, 211, 102, 0.42),
+			0 2px 6px rgba(28, 25, 23, 0.12);
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease,
+			background 0.15s ease;
+	}
+
+	.wa-float:hover {
+		background: #1fb855;
+		color: #fff;
+		transform: scale(1.06);
+		box-shadow:
+			0 6px 26px rgba(37, 211, 102, 0.5),
+			0 2px 8px rgba(28, 25, 23, 0.14);
+	}
+
+	.wa-float:focus-visible {
+		outline: 2px solid var(--color-accent, #9f1239);
+		outline-offset: 3px;
+	}
+
+	.wa-float:active {
+		transform: scale(0.98);
+	}
+
+	.wa-float :global(svg) {
+		width: 1.9rem;
+		height: 1.9rem;
+		display: block;
+	}
+
+	@media print {
+		.wa-float {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.wa-float {
+			transition: none;
+		}
+
+		.wa-float:hover,
+		.wa-float:active {
+			transform: none;
+		}
+	}
+</style>

@@ -3,6 +3,7 @@ import { SEO } from 'astro-seo';
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 
 /** Kata kunci utama situs (bisa dioverride per halaman lewat prop `keywords`). */
 const siteKeywords =
@@ -84,5 +85,6 @@ const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 			<slot />
 		</main>
 		<SiteFooter />
+		<FloatingWhatsApp lang={lang} />
 	</body>
 </html>

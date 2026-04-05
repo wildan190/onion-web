@@ -257,7 +257,12 @@ const homeStructuredData = {
 					<p class="home-story__photos-caption">
 						Cuplikan aktivitas, lingkungan gudang, dan perjalanan produk kami.
 					</p>
-					<div class="home-story__photos" aria-label="Foto aktivitas dan lingkungan">
+					<div
+						class="home-story__photos"
+						role="region"
+						aria-roledescription="carousel"
+						aria-label="Foto aktivitas dan lingkungan — geser untuk melihat lainnya"
+					>
 						{
 							homeStoryPhotos.map(({ src, alt }) => (
 								<figure class="home-story__photo">
@@ -313,7 +318,12 @@ const homeStructuredData = {
 				<p class="home-quality-photos-caption">
 					Cuplikan produk bawang merah yang kami sortir dan edarkan.
 				</p>
-				<div class="home-quality-photos" aria-label="Foto produk bawang merah">
+				<div
+					class="home-quality-photos"
+					role="region"
+					aria-roledescription="carousel"
+					aria-label="Foto produk bawang merah — geser untuk melihat lainnya"
+				>
 					{
 						homeQualityPhotos.map(({ src, alt }) => (
 							<figure class="home-quality-photo">
@@ -957,21 +967,35 @@ const homeStructuredData = {
 		max-width: 42rem;
 	}
 
+	/* Mobile: carousel horizontal + scroll-snap; desktop: grid 3 kolom */
 	.home-story__photos {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 0.85rem;
+		display: flex;
+		flex-flow: row nowrap;
+		gap: 0.75rem;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scroll-padding-inline: 1.25rem;
+		-webkit-overflow-scrolling: touch;
 		margin-bottom: 2rem;
+		padding-bottom: 0.35rem;
+		scrollbar-width: thin;
 	}
 
-	@media (min-width: 768px) {
-		.home-story__photos {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
+	.home-story__photos::-webkit-scrollbar {
+		height: 6px;
+	}
+
+	.home-story__photos::-webkit-scrollbar-thumb {
+		background: rgba(28, 25, 23, 0.2);
+		border-radius: 999px;
 	}
 
 	.home-story__photo {
 		margin: 0;
+		flex: 0 0 86%;
+		scroll-snap-align: center;
+		scroll-snap-stop: always;
 		border-radius: var(--home-radius);
 		overflow: hidden;
 		border: 1px solid var(--color-border);
@@ -987,9 +1011,22 @@ const homeStructuredData = {
 		display: block;
 	}
 
-	@media (max-width: 767px) {
+	@media (min-width: 768px) {
+		.home-story__photos {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			overflow-x: visible;
+			flex-wrap: unset;
+			scroll-snap-type: none;
+			scroll-padding-inline: 0;
+			padding-bottom: 0;
+		}
+
 		.home-story__photo {
-			aspect-ratio: 4 / 3;
+			flex: unset;
+			scroll-snap-align: unset;
+			scroll-snap-stop: normal;
+			min-width: 0;
 		}
 	}
 
@@ -1055,20 +1092,34 @@ const homeStructuredData = {
 	}
 
 	.home-quality-photos {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
+		display: flex;
+		flex-flow: row nowrap;
+		gap: 0.85rem;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scroll-padding-inline: 1.25rem;
+		-webkit-overflow-scrolling: touch;
 		margin-bottom: 2rem;
+		padding-bottom: 0.35rem;
+		scrollbar-width: thin;
 	}
 
-	@media (min-width: 640px) {
-		.home-quality-photos {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
+	.home-quality-photos::-webkit-scrollbar {
+		height: 6px;
+	}
+
+	.home-quality-photos::-webkit-scrollbar-thumb {
+		background: rgba(159, 18, 57, 0.25);
+		border-radius: 999px;
 	}
 
 	.home-quality-photo {
 		margin: 0;
+		flex: 0 0 72%;
+		max-width: 16rem;
+		scroll-snap-align: center;
+		scroll-snap-stop: always;
 		border-radius: var(--home-radius);
 		overflow: hidden;
 		border: 1px solid rgba(159, 18, 57, 0.12);
@@ -1082,6 +1133,26 @@ const homeStructuredData = {
 		height: 100%;
 		object-fit: cover;
 		display: block;
+	}
+
+	@media (min-width: 768px) {
+		.home-quality-photos {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1rem;
+			overflow-x: visible;
+			scroll-snap-type: none;
+			scroll-padding-inline: 0;
+			padding-bottom: 0;
+		}
+
+		.home-quality-photo {
+			flex: unset;
+			max-width: none;
+			scroll-snap-align: unset;
+			scroll-snap-stop: normal;
+			min-width: 0;
+		}
 	}
 
 	/* Kualitas — panen, kulit bawang, daun */
