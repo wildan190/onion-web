@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lastUpdated = '5 April 2026';
+const whatsappHref = 'https://wa.me/6281233624549';
+const whatsappDisplay = '0812-3362-4549';
+const email = 'mitrabawang.id@gmail.com';
+const warehouseAddress =
+	'Manggihan Laban, RT.10/RW.03, Sambung, Kec. Godong, Kabupaten Grobogan, Jawa Tengah 58162, Indonesia.';
+---
+
+<Layout
+	title="Kebijakan Privasi — mitrabawang.id"
+	description="Kebijakan privasi mitrabawang.id: data yang dikumpulkan, penggunaan informasi, cookie, dan kontak."
+>
+	<div class="page-shell policy">
+		<h1>Kebijakan Privasi</h1>
+		<p class="policy__updated">Terakhir diperbarui: {lastUpdated}</p>
+
+		<div class="prose-block policy__body">
+			<h2>1. Pendahuluan</h2>
+			<p>
+				mitrabawang.id berkomitmen untuk melindungi dan menjaga privasi setiap pengunjung dan pelanggan kami. Kebijakan
+				Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda saat
+				mengakses website kami.
+			</p>
+			<p>
+				Dengan menggunakan situs ini, Anda dianggap telah membaca, memahami, dan menyetujui kebijakan ini.
+			</p>
+
+			<h2>2. Informasi yang Kami Kumpulkan</h2>
+			<p>Kami dapat mengumpulkan beberapa jenis informasi, antara lain:</p>
+
+			<h3 class="policy__h3">a. Informasi Pribadi</h3>
+			<ul>
+				<li>Nama lengkap</li>
+				<li>Nomor telepon / WhatsApp</li>
+				<li>Alamat email</li>
+				<li>Alamat pengiriman</li>
+			</ul>
+
+			<h3 class="policy__h3">b. Informasi Non-Pribadi</h3>
+			<ul>
+				<li>Alamat IP</li>
+				<li>Jenis perangkat</li>
+				<li>Browser yang digunakan</li>
+				<li>Data aktivitas di website</li>
+			</ul>
+
+			<p>Informasi ini dikumpulkan saat Anda:</p>
+			<ul>
+				<li>Mengisi formulir kontak</li>
+				<li>Melakukan pemesanan</li>
+				<li>Menghubungi kami melalui WhatsApp atau media lain</li>
+			</ul>
+
+			<h2>3. Penggunaan Informasi</h2>
+			<p>Informasi yang kami kumpulkan digunakan untuk:</p>
+			<ul>
+				<li>Memproses pesanan dan pengiriman</li>
+				<li>Memberikan layanan pelanggan</li>
+				<li>Mengirimkan informasi produk atau promo</li>
+				<li>Meningkatkan kualitas layanan dan website</li>
+				<li>Keperluan analisis dan pengembangan bisnis</li>
+			</ul>
+			<p>
+				Kami tidak akan menjual, menyewakan, atau membagikan data pribadi Anda kepada pihak ketiga tanpa izin, kecuali
+				diwajibkan oleh hukum.
+			</p>
+
+			<h2>4. Perlindungan Data</h2>
+			<p>Kami mengambil langkah-langkah keamanan yang wajar untuk melindungi data Anda, termasuk:</p>
+			<ul>
+				<li>Pengamanan server dan database</li>
+				<li>Pembatasan akses data</li>
+				<li>Penggunaan sistem keamanan standar</li>
+			</ul>
+			<p>Namun, perlu dipahami bahwa tidak ada sistem yang 100% aman.</p>
+
+			<h2>5. Cookie</h2>
+			<p>Website kami menggunakan cookie untuk meningkatkan pengalaman pengguna.</p>
+			<p>Cookie digunakan untuk:</p>
+			<ul>
+				<li>Menyimpan preferensi pengguna</li>
+				<li>Menganalisis traffic website</li>
+				<li>Meningkatkan performa situs</li>
+			</ul>
+			<p>Anda dapat menonaktifkan cookie melalui pengaturan browser masing-masing.</p>
+
+			<h2>6. Tautan ke Situs Lain</h2>
+			<p>
+				Website kami mungkin mengandung tautan ke situs pihak ketiga. Kami tidak bertanggung jawab atas kebijakan privasi
+				atau konten situs tersebut.
+			</p>
+
+			<h2>7. Persetujuan</h2>
+			<p>
+				Dengan menggunakan website mitrabawang.id, Anda menyetujui pengumpulan dan penggunaan informasi sesuai dengan
+				kebijakan ini.
+			</p>
+
+			<h2>8. Perubahan Kebijakan</h2>
+			<p>
+				Kami berhak untuk memperbarui Kebijakan Privasi ini sewaktu-waktu. Perubahan akan ditampilkan di halaman ini.
+			</p>
+
+			<h2>9. Kontak Kami</h2>
+			<p>Jika Anda memiliki pertanyaan terkait Kebijakan Privasi ini, silakan hubungi kami melalui:</p>
+			<ul class="policy__contact-list">
+				<li>
+					<strong>WhatsApp:</strong>{' '}
+					<a href={whatsappHref} target="_blank" rel="noopener noreferrer">{whatsappDisplay}</a>
+				</li>
+				<li>
+					<strong>Email:</strong>{' '}
+					<a href={`mailto:${email}`}>{email}</a>
+				</li>
+				<li>
+					<strong>Alamat:</strong>{' '}
+					{warehouseAddress}
+				</li>
+			</ul>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.policy__updated {
+		margin: -0.35rem 0 1.25rem;
+		font-size: 0.95rem;
+		color: var(--color-muted);
+	}
+
+	.policy__body .policy__h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		margin: 1.15rem 0 0.45rem;
+		color: var(--color-text);
+	}
+
+	.policy__body .policy__h3:first-of-type {
+		margin-top: 0.5rem;
+	}
+
+	.policy__contact-list {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+	}
+
+	.policy__contact-list li {
+		margin-bottom: 0.65rem;
+	}
+
+	.policy__contact-list li:last-child {
+		margin-bottom: 0;
+	}
+</style>

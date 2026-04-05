@@ -1,0 +1,1703 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SocialIconLinks from '../components/SocialIconLinks.astro';
+
+const mapEmbedSrc =
+	'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.496536404526!2d110.7514169!3d-7.0682820999999985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70bdbca3a0462f%3A0xe8743627fec392d1!2smitrabawang.id%20%7C%20Supplier%20%26%20Distributor%20Bawang%20Merah%20Penjualan%20Grosir%20untuk%20Agen!5e0!3m2!1sid!2skr!4v1775140423549!5m2!1sid!2skr';
+
+const warehouseAddress =
+	'Manggihan Laban, RT.10/RW.03, Sambung, Kec. Godong, Kabupaten Grobogan, Jawa Tengah 58162, Indonesia.';
+
+const whatsappNumber = '6281233624549';
+const whatsappDisplay = '0812-3362-4549';
+const whatsappHref = `https://wa.me/${whatsappNumber}`;
+
+const qualityChecks = [
+	'Tidak mudah busuk',
+	'Daya simpan hingga ±6 bulan',
+	'Dapat dijadikan bibit',
+];
+
+const productTypes = [
+	{ title: 'Bawang Merah Ikat', sub: 'Masih berdaun', variant: 'ikat' as const },
+	{ title: 'Bawang Merah Bersih', sub: 'Tanpa daun', variant: 'bersih' as const },
+];
+
+const distribution: { region: string; markets: string[] }[] = [
+	{
+		region: 'DKI Jakarta & Banten',
+		markets: [
+			'Pasar Induk Kramat Jati (Jakarta Timur)',
+			'Pasar Induk Tanah Tinggi (Tangerang)',
+			'Pasar Induk Rau (Serang)',
+			'Pasar Kebayoran Lama (Jakarta Selatan)',
+		],
+	},
+	{
+		region: 'Jawa Barat',
+		markets: [
+			'Pasar Induk Caringin (Bandung)',
+			'Pasar Induk Cibitung (Bekasi)',
+			'Pasar Induk Kemang / Teknik Umum (Bogor)',
+			'Pasar Induk Cikopo (Purwakarta)',
+			'Pasar Induk Jagasatru (Cirebon)',
+			'Pasar Gede (Bageut / Sukabumi)',
+		],
+	},
+	{
+		region: 'Jawa Tengah',
+		markets: [
+			'Pasar Induk Legi (Solo)',
+			'Pasar Johar (Semarang)',
+			'Pasar Sayur Cepogo (Boyolali)',
+			'Pasar Bandungan (Semarang)',
+			'Pasar Induk Pemalang',
+			'Pasar Sayur Kutabawa (Purbalingga)',
+			'Pasar Bawang Sengon (Brebes)',
+			'Pasar Sayur Jetis (Bandungan)',
+		],
+	},
+	{
+		region: 'DI Yogyakarta',
+		markets: [
+			'Pasar Induk Giwangan (Yogyakarta)',
+			'Pasar Gamping (Sleman)',
+			'Pasar Beringharjo (Yogyakarta)',
+		],
+	},
+	{
+		region: 'Jawa Timur',
+		markets: [
+			'Pasar Induk Osowilangun (Surabaya)',
+			'Pasar Induk Gadang (Malang)',
+			'Pasar Sayur Pare (Kediri)',
+			'Pasar Induk Puspa Agro (Sidoarjo)',
+			'Pasar Induk Keputran (Surabaya)',
+			'Pasar Sayur Magetan',
+			'Pasar Bawang Merah Sukomoro (Nganjuk)',
+			'Pasar Bawang Dringu (Probolinggo)',
+		],
+	},
+];
+
+const googleMapsPlaceUrl =
+	'https://www.google.com/maps/search/?api=1&query=mitrabawang.id+Supplier+Distributor+Bawang+Merah+Godong+Grobogan';
+---
+
+<Layout
+	title="mitrabawang.id — Supplier & Distributor Bawang Merah Grosir untuk Agen"
+	description="Supplier bawang merah tangan pertama setelah petani. Harga grosir, distribusi ke seluruh Indonesia dan ekspor. Gudang Grobogan, Jawa Tengah."
+>
+	<div class="home">
+		<!-- Hero -->
+		<section class="home-hero" aria-labelledby="home-hero-title">
+			<div class="home-hero__bg" aria-hidden="true"></div>
+			<div class="home-hero__inner">
+				<div class="home-hero__copy">
+					<p class="home-eyebrow">
+						<span class="home-pill">Tangan pertama</span>
+						<span class="home-pill home-pill--muted">Harga grosir</span>
+					</p>
+					<h1 id="home-hero-title" class="home-hero__title">
+						Supplier &amp; Distributor Bawang Merah <span class="home-hero__accent">Penjualan Grosir</span>
+					</h1>
+					<p class="home-hero__lead">
+						Supplier bawang merah tangan pertama • Harga grosir
+					</p>
+					<p class="home-hero__text">
+						<strong>mitrabawang.id</strong> adalah supplier bawang merah tangan pertama setelah petani. Kami menjual
+						bawang merah dengan harga grosir, melayani distribusi ke seluruh Indonesia bahkan hingga ekspor.
+					</p>
+					<div class="home-hero__actions">
+						<a class="home-btn home-btn--primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+							Chat WhatsApp
+						</a>
+						<a class="home-btn home-btn--outline" href="/info-harga-bawang-merah">Harga hari ini</a>
+					</div>
+				</div>
+				<aside class="home-hero__panel" aria-label="Ringkasan">
+					<div class="home-stat">
+						<span class="home-stat__num">24/7</span>
+						<span class="home-stat__label">Jam operasional gudang</span>
+					</div>
+					<div class="home-stat">
+						<span class="home-stat__num">Bima &amp; Brebes</span>
+						<span class="home-stat__label">Varietas unggulan mitra petani</span>
+					</div>
+					<div class="home-stat">
+						<span class="home-stat__num">±6 bln</span>
+						<span class="home-stat__label">Daya simpan (askip kering)</span>
+					</div>
+					<a class="home-hero__panel-link" href="/exporter-red-onion-shallot-from-indonesia">
+						Ekspor red onion →
+					</a>
+				</aside>
+			</div>
+		</section>
+
+		<!-- Cerita / misi -->
+		<section class="home-section home-section--story" aria-labelledby="story-heading">
+			<div class="home-wrap">
+				<div class="home-story">
+					<div class="home-story__intro">
+						<h2 id="story-heading" class="home-h2">Dari hati ke petani, ke meja konsumen</h2>
+						<p class="home-story__drop">
+							mitrabawang.id lahir dari keprihatinan kami terhadap kondisi petani bawang merah yang kerap menghadapi
+							anjloknya harga di tingkat petani.
+						</p>
+					</div>
+					<div class="home-story__cols">
+						<div class="home-story__card">
+							<p>
+								Kami menginisiasi mitrabawang.id sebagai wadah kolaboratif bagi para petani bawang merah, agar petani
+								dapat menjual hasil panennya dengan harga yang lebih adil, transparan, dan menguntungkan. Kami percaya,
+								kesejahteraan petani adalah fondasi utama dari kualitas bawang merah sampai ke tangan konsumen.
+							</p>
+						</div>
+						<div class="home-story__card home-story__card--accent">
+							<p>
+								Tidak hanya berperan sebagai penghubung pasar, kami juga secara aktif melakukan pelatihan, penyuluhan, dan
+								pendampingan bersama petani.
+							</p>
+							<p>
+								Langkah ini kami lakukan untuk memastikan setiap petani mampu menghasilkan bawang merah berkualitas
+								tinggi, sekaligus menjaga ketersediaan stok yang stabil dan berkelanjutan.
+							</p>
+						</div>
+					</div>
+					<p class="home-story__closing">
+						Dengan pendekatan ini, mitrabawang.id tidak hanya menjadi supplier atau distributor, tetapi juga menjadi
+						<strong>mitra strategis petani dan agen pengecer bawang merah</strong>.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Kualitas — nuansa panen & bawang merah -->
+		<section class="home-section home-section--quality" id="kualitas" aria-labelledby="quality-heading">
+			<div class="home-quality-skin" aria-hidden="true"></div>
+			<div class="home-wrap home-quality-wrap">
+				<header class="home-quality-head">
+					<p class="home-quality-ribbon">Askip tua &amp; kering · Sortir ketat</p>
+					<h2 id="quality-heading" class="home-h2 home-quality-title">Jual Bawang Merah Berkualitas</h2>
+					<p class="home-quality-head__sub">
+						Bersama petani mitra, kami secara konsisten mengembangkan varietas unggulan seperti
+						<strong>Bima</strong> dan <strong>Brebes</strong> yang sudah terbukti memiliki permintaan banyak di pasaran.
+					</p>
+					<div class="home-quality-varieties" aria-hidden="true">
+						<span class="home-quality-varieties__pill">Bima</span>
+						<span class="home-quality-varieties__pill">Brebes</span>
+					</div>
+				</header>
+
+				<div class="home-quality-grid">
+					<div class="home-quality-main">
+						<p class="home-quality-kicker">Kami tidak asal jual</p>
+						<p class="home-quality-lead">
+							Kami hanya menjual bawang merah tua dan kering (askip) yang sudah melalui proses sortir yang ketat,
+							sehingga:
+						</p>
+						<ul class="home-checklist">
+							{qualityChecks.map((t) => (
+								<li>
+									<span class="home-checklist__icon" aria-hidden="true">✓</span>
+									{t}
+								</li>
+							))}
+						</ul>
+					</div>
+					<div class="home-quality-products">
+						<p class="home-quality-kicker">Dua jenis untuk kebutuhan pasar</p>
+						<div class="home-product-cards">
+							{
+								productTypes.map(({ title, sub, variant }) => (
+									<div class:list={['home-product-card', `home-product-card--${variant}`]}>
+										<span class="home-product-card__n">{title}</span>
+										<span class="home-product-card__sub">{sub}</span>
+									</div>
+								))
+							}
+						</div>
+						<div class="home-price-band">
+							<span class="home-price-band__label">Kisaran harga</span>
+							<span class="home-price-band__value">Rp 22.000 – Rp 35.000</span>
+							<span class="home-price-band__hint">(dapat berubah mengikuti pasar)</span>
+						</div>
+						<a class="home-quality-price-link" href="/info-harga-bawang-merah">
+							<span>Update harga terkini</span>
+							<span class="home-quality-price-link__sub">Harga Bawang Merah Hari ini</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Gudang + peta -->
+		<section class="home-section" aria-labelledby="warehouse-heading">
+			<div class="home-wrap">
+				<div class="home-map-layout">
+					<div class="home-map-copy">
+						<h2 id="warehouse-heading" class="home-h2">Lokasi Gudang Bawang Merah mitrabawang.id</h2>
+						<address class="home-address">
+							{warehouseAddress}
+						</address>
+						<p class="home-map-note">
+							mitrabawang.id memiliki jaringan distribusi yang terintegrasi, sehingga meminimalisir risiko kebusukan
+							selama pengiriman.
+						</p>
+					</div>
+					<div class="home-map-frame">
+						<iframe
+							title="Peta lokasi gudang mitrabawang.id di Google Maps"
+							src={mapEmbedSrc}
+							width="600"
+							height="450"
+							style="border:0"
+							allowfullscreen=""
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Jaringan pasar -->
+		<section class="home-section home-section--markets" aria-labelledby="markets-heading">
+			<div class="home-wrap">
+				<h2 id="markets-heading" class="home-h2">Jaringan pasar yang kami layani</h2>
+				<p class="home-markets-lead">
+					mitrabawang.id melayani pengiriman ke berbagai pasar berikut:
+				</p>
+				<div class="home-region-grid">
+					{
+						distribution.map(({ region, markets }, i) => (
+							<article class:list={['home-region-card', i % 2 === 1 && 'home-region-card--alt']}>
+								<h3 class="home-h3">{region}</h3>
+								<ul class="home-region-list">
+									{markets.map((m) => (
+										<li>{m}</li>
+									))}
+								</ul>
+							</article>
+						))
+					}
+				</div>
+				<div class="home-export">
+					<div class="home-export__visual" aria-hidden="true">
+						<div class="home-export__onion">
+							<span class="home-export__onion-ring home-export__onion-ring--1"></span>
+							<span class="home-export__onion-ring home-export__onion-ring--2"></span>
+							<span class="home-export__onion-ring home-export__onion-ring--3"></span>
+							<span class="home-export__onion-ring home-export__onion-ring--4"></span>
+							<span class="home-export__onion-ring home-export__onion-ring--5"></span>
+							<span class="home-export__onion-core"></span>
+						</div>
+						<p class="home-export__visual-caption">Shallot · Red onion</p>
+					</div>
+					<div class="home-export__main">
+						<p class="home-export__eyebrow">Ekspor bawang merah</p>
+						<p class="home-export__text">
+							Selain melayani pengiriman ke seluruh Indonesia, kami juga mengekspor bawang merah ke negara tetangga
+							Asia Tenggara.
+						</p>
+						<ul class="home-export__countries" role="list">
+							<li>Singapore</li>
+							<li>Malaysia</li>
+							<li>Thailand</li>
+							<li>Vietnam</li>
+						</ul>
+						<a class="home-export__cta" href="/exporter-red-onion-shallot-from-indonesia">
+							<span>Lihat aktivitas ekspor</span>
+							<span class="home-export__cta-sub">Exporter Red Onion (Shallot) From Indonesia</span>
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+								<path
+									d="M5 12h14m0 0l-6-6m6 6l-6 6"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Testimoni & video -->
+		<section class="home-section home-section--social-proof" aria-labelledby="testimoni-heading">
+			<div class="home-wrap">
+				<h2 id="testimoni-heading" class="home-h2">Testimoni</h2>
+				<p class="home-social-lead">
+					Lihat ulasan dan reputasi kami di Google Maps, serta aktivitas perdagangan bawang merah di kanal video &
+					sosial.
+				</p>
+				<div class="home-proof-grid">
+					<div class="home-proof-card home-proof-card--map">
+						<h3 class="home-h3">Ulasan di Google Maps</h3>
+						<p class="home-proof-card__text">
+							Tinjau lokasi bisnis dan ulasan pelanggan di peta resmi mitrabawang.id.
+						</p>
+						<div class="home-proof-embed">
+							<iframe
+								title="Google Maps — mitrabawang.id (ulasan & lokasi)"
+								src={mapEmbedSrc}
+								width="600"
+								height="320"
+								style="border:0"
+								allowfullscreen=""
+								loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<a class="home-btn home-btn--outline home-btn--full" href={googleMapsPlaceUrl} target="_blank" rel="noopener noreferrer">
+							Buka di Google Maps
+						</a>
+					</div>
+					<div class="home-proof-card home-proof-card--social-icons">
+						<h3 class="home-h3">Aktivitas di media sosial</h3>
+						<p class="home-proof-card__text">Lihat aktivitas perdagangan bawang merah kami.</p>
+						<div class="home-proof-social-row">
+							<SocialIconLinks />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Agen -->
+		<section class="home-section home-section--cta-agent" aria-labelledby="agent-heading">
+			<div class="home-wrap home-cta-agent">
+				<div class="home-cta-agent__decor" aria-hidden="true"></div>
+				<h2 id="agent-heading" class="home-h2 home-h2--on-dark">
+					Anda Agen Bawang Merah? Ingin Membeli dengan Harga Grosir?
+				</h2>
+				<p class="home-cta-agent__text">
+					mitrabawang.id mengedepankan transparansi harga dan timbangan dengan prinsip kepercayaan serta kejujuran. Jika
+					Anda ingin membeli dengan kuantitas banyak, kami sarankan untuk datang langsung ke gudang mitrabawang.id.
+					Hubungi kami terlebih dahulu melalui WhatsApp.
+				</p>
+				<a class="home-btn home-btn--whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+					Hubungi via WhatsApp
+				</a>
+			</div>
+		</section>
+
+		<!-- Kontak -->
+		<section class="home-section home-section--contact" aria-labelledby="contact-heading" id="kontak">
+			<div class="home-wrap">
+				<h2 id="contact-heading" class="home-h2 home-contact-page-title">Hubungi mitrabawang.id</h2>
+				<div class="home-contact-shell">
+					<div class="home-contact-grid">
+						<div class="home-contact-block home-contact-block--location">
+							<p class="home-contact-kicker">Lokasi gudang</p>
+							<address class="home-contact-address">{warehouseAddress}</address>
+							<a
+								class="home-contact-btn home-contact-btn--map"
+								href={googleMapsPlaceUrl}
+								target="_blank"
+								rel="noopener noreferrer">Buka di Google Maps</a>
+							<dl class="home-contact-hours">
+								<div class="home-contact-hours__row">
+									<dt>Jam operasional</dt>
+									<dd>Senin – Minggu · 24 jam</dd>
+								</div>
+							</dl>
+						</div>
+						<div class="home-contact-block home-contact-block--channels">
+							<p class="home-contact-kicker">Hubungi cepat</p>
+							<a class="home-contact-btn home-contact-btn--wa" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+								<span class="home-contact-btn__label">WhatsApp</span>
+								<span class="home-contact-btn__value">{whatsappDisplay}</span>
+							</a>
+							<a class="home-contact-btn home-contact-btn--mail" href="mailto:mitrabawang.id@gmail.com">
+								<span class="home-contact-btn__label">Email</span>
+								<span class="home-contact-btn__value">mitrabawang.id@gmail.com</span>
+							</a>
+						</div>
+					</div>
+					<div class="home-contact-social-wrap">
+						<SocialIconLinks />
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	.home {
+		--home-rose: #9f1239;
+		--home-rose-dark: #881337;
+		--home-amber: #d97706;
+		--home-amber-soft: #fffbeb;
+		--home-slate: #1c1917;
+		--home-slate-soft: #44403c;
+		--home-cream: #faf7f2;
+		--home-card: #ffffff;
+		--home-radius: 16px;
+		--home-radius-lg: 24px;
+		max-width: 100%;
+		overflow-x: clip;
+	}
+
+	.home-wrap {
+		width: 100%;
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 1.25rem;
+	}
+
+	.home-h2 {
+		font-size: clamp(1.45rem, 3.5vw, 2rem);
+		font-weight: 800;
+		line-height: 1.2;
+		letter-spacing: -0.03em;
+		margin: 0 0 1rem;
+		color: var(--home-slate);
+	}
+
+	.home-h2--light {
+		color: #fff;
+	}
+
+	.home-h2--on-dark {
+		color: #fff;
+	}
+
+	.home-h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		margin: 0 0 0.65rem;
+		color: var(--home-slate);
+		letter-spacing: -0.02em;
+	}
+
+	/* Hero */
+	.home-hero {
+		position: relative;
+		padding: clamp(2rem, 6vw, 4rem) 0 clamp(2.5rem, 7vw, 4.5rem);
+		margin: 0 0 0;
+	}
+
+	.home-hero__bg {
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(ellipse 80% 60% at 100% 0%, rgba(159, 18, 57, 0.12), transparent 55%),
+			radial-gradient(ellipse 70% 50% at 0% 100%, rgba(217, 119, 6, 0.1), transparent 50%),
+			linear-gradient(180deg, #fff 0%, var(--home-cream) 100%);
+		pointer-events: none;
+	}
+
+	.home-hero__inner {
+		position: relative;
+		display: grid;
+		gap: clamp(1.5rem, 4vw, 2.5rem);
+		align-items: start;
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 1.25rem;
+	}
+
+	@media (min-width: 900px) {
+		.home-hero__inner {
+			grid-template-columns: 1.15fr 0.85fr;
+			align-items: stretch;
+		}
+	}
+
+	.home-eyebrow {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0 0 1rem;
+	}
+
+	.home-pill {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.35rem 0.85rem;
+		font-size: 0.78rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		border-radius: 999px;
+		background: rgba(159, 18, 57, 0.1);
+		color: var(--home-rose);
+		border: 1px solid rgba(159, 18, 57, 0.2);
+	}
+
+	.home-pill--muted {
+		background: rgba(68, 64, 60, 0.08);
+		color: var(--home-slate-soft);
+		border-color: rgba(68, 64, 60, 0.12);
+	}
+
+	.home-hero__title {
+		font-size: clamp(1.85rem, 5vw, 2.75rem);
+		font-weight: 800;
+		line-height: 1.12;
+		letter-spacing: -0.035em;
+		margin: 0 0 0.75rem;
+		color: var(--home-slate);
+	}
+
+	.home-hero__accent {
+		color: var(--home-rose);
+		display: inline-block;
+	}
+
+	.home-hero__lead {
+		font-size: 1.05rem;
+		font-weight: 600;
+		color: var(--home-slate-soft);
+		margin: 0 0 1rem;
+	}
+
+	.home-hero__text {
+		margin: 0 0 1.5rem;
+		font-size: 1.05rem;
+		line-height: 1.7;
+		color: #57534e;
+		max-width: 38rem;
+	}
+
+	.home-hero__text strong {
+		color: var(--home-slate);
+	}
+
+	.home-hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+	}
+
+	.home-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.75rem 1.25rem;
+		font-weight: 700;
+		font-size: 0.95rem;
+		border-radius: 12px;
+		text-decoration: none;
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease,
+			background 0.15s ease;
+		border: 2px solid transparent;
+	}
+
+	.home-btn:active {
+		transform: scale(0.98);
+	}
+
+	.home-btn--primary {
+		background: var(--home-rose);
+		color: #fff;
+		box-shadow: 0 4px 14px rgba(159, 18, 57, 0.35);
+	}
+
+	.home-btn--primary:hover {
+		background: var(--home-rose-dark);
+		color: #fff;
+	}
+
+	.home-btn--outline {
+		background: #fff;
+		color: var(--home-slate);
+		border-color: var(--color-border);
+	}
+
+	.home-btn--outline:hover {
+		border-color: var(--home-rose);
+		color: var(--home-rose);
+	}
+
+	.home-btn--dark {
+		background: var(--home-slate);
+		color: #fff;
+	}
+
+	.home-btn--dark:hover {
+		background: #292524;
+		color: #fff;
+	}
+
+	.home-btn--whatsapp {
+		background: #25d366;
+		color: #fff;
+		box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+	}
+
+	.home-btn--whatsapp:hover {
+		background: #1fb855;
+		color: #fff;
+	}
+
+	.home-btn--full {
+		width: 100%;
+		margin-top: 0.75rem;
+	}
+
+	.home-hero__panel {
+		background: var(--home-card);
+		border-radius: var(--home-radius-lg);
+		padding: 1.35rem 1.5rem;
+		border: 1px solid var(--color-border);
+		box-shadow:
+			0 1px 2px rgba(28, 25, 23, 0.04),
+			0 12px 40px rgba(28, 25, 23, 0.08);
+		display: flex;
+		flex-direction: column;
+		gap: 1.1rem;
+	}
+
+	.home-stat {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.home-stat:last-of-type {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+
+	.home-stat__num {
+		font-size: 1.15rem;
+		font-weight: 800;
+		color: var(--home-rose);
+		letter-spacing: -0.02em;
+	}
+
+	.home-stat__label {
+		font-size: 0.88rem;
+		color: #78716c;
+		line-height: 1.4;
+	}
+
+	.home-hero__panel-link {
+		margin-top: 0.25rem;
+		font-weight: 700;
+		font-size: 0.92rem;
+		color: var(--home-rose);
+		text-decoration: none;
+	}
+
+	.home-hero__panel-link:hover {
+		text-decoration: underline;
+	}
+
+	/* Sections */
+	.home-section {
+		padding: clamp(2.5rem, 6vw, 4rem) 0;
+	}
+
+	.home-section--story {
+		background: linear-gradient(180deg, var(--home-cream) 0%, #fff 100%);
+	}
+
+	.home-story__intro {
+		max-width: 40rem;
+		margin-bottom: 1.75rem;
+	}
+
+	.home-story__drop {
+		font-size: 1.125rem;
+		line-height: 1.65;
+		color: #57534e;
+		margin: 0;
+	}
+
+	.home-story__cols {
+		display: grid;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.home-story__cols {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.home-story__card {
+		background: #fff;
+		border-radius: var(--home-radius);
+		padding: 1.35rem 1.5rem;
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow);
+	}
+
+	.home-story__card p {
+		margin: 0 0 1rem;
+		color: #57534e;
+		line-height: 1.65;
+		font-size: 0.98rem;
+	}
+
+	.home-story__card p:last-child {
+		margin-bottom: 0;
+	}
+
+	.home-story__card--accent {
+		background: linear-gradient(145deg, #fff 0%, var(--home-amber-soft) 100%);
+		border-color: rgba(217, 119, 6, 0.2);
+	}
+
+	.home-story__closing {
+		font-size: 1.05rem;
+		line-height: 1.7;
+		color: var(--home-slate-soft);
+		margin: 0;
+		max-width: 48rem;
+		padding: 1.25rem 1.35rem;
+		border-left: 4px solid var(--home-rose);
+		background: rgba(159, 18, 57, 0.04);
+		border-radius: 0 var(--home-radius) var(--home-radius) 0;
+	}
+
+	.home-story__closing strong {
+		color: var(--home-slate);
+	}
+
+	/* Kualitas — panen, kulit bawang, daun */
+	.home-section--quality {
+		position: relative;
+		overflow: hidden;
+		background:
+			radial-gradient(ellipse 90% 70% at 100% 0%, rgba(254, 202, 202, 0.45) 0%, transparent 55%),
+			radial-gradient(ellipse 70% 50% at 0% 100%, rgba(187, 247, 208, 0.35) 0%, transparent 50%),
+			linear-gradient(175deg, #fffbeb 0%, #fff7ed 30%, #fef2f2 65%, #fff1f2 100%);
+	}
+
+	.home-quality-skin {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		height: 5px;
+		background: linear-gradient(90deg, #166534 0%, #ca8a04 18%, #9f1239 42%, #be123c 70%, #ea580c 100%);
+		opacity: 0.9;
+	}
+
+	.home-quality-wrap {
+		position: relative;
+		padding-top: 0.25rem;
+	}
+
+	.home-quality-head {
+		max-width: 44rem;
+		margin-bottom: 2rem;
+	}
+
+	.home-quality-ribbon {
+		margin: 0 0 0.65rem;
+		display: inline-block;
+		padding: 0.35rem 0.85rem;
+		font-size: 0.7rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: #7f1d1d;
+		background: rgba(255, 255, 255, 0.85);
+		border: 1px solid rgba(190, 18, 60, 0.2);
+		border-radius: 999px;
+		box-shadow: 0 2px 10px rgba(127, 29, 29, 0.06);
+	}
+
+	.home-quality-title {
+		color: #431407 !important;
+		margin-bottom: 0.75rem !important;
+	}
+
+	.home-quality-head__sub {
+		margin: 0 0 1rem;
+		font-size: 1.05rem;
+		line-height: 1.65;
+		color: #57534e;
+	}
+
+	.home-quality-head__sub strong {
+		color: #9f1239;
+		font-weight: 800;
+		padding: 0 0.15rem;
+		background: linear-gradient(180deg, transparent 60%, rgba(254, 205, 211, 0.55) 60%);
+		border-radius: 2px;
+	}
+
+	.home-quality-varieties {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.home-quality-varieties__pill {
+		padding: 0.4rem 1rem;
+		font-size: 0.8125rem;
+		font-weight: 800;
+		color: #7f1d1d;
+		background: #fff;
+		border: 2px solid rgba(159, 18, 57, 0.25);
+		border-radius: 999px;
+		box-shadow: 0 2px 8px rgba(159, 18, 57, 0.06);
+	}
+
+	.home-quality-grid {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	@media (min-width: 900px) {
+		.home-quality-grid {
+			grid-template-columns: 1fr 1fr;
+			align-items: stretch;
+		}
+	}
+
+	.home-quality-main,
+	.home-quality-products {
+		background: #fff;
+		border: 1px solid rgba(190, 18, 60, 0.12);
+		border-radius: var(--home-radius-lg);
+		padding: 1.5rem 1.65rem;
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.9) inset,
+			0 8px 32px rgba(127, 29, 29, 0.07);
+	}
+
+	.home-quality-kicker {
+		font-size: 0.72rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: #9f1239;
+		margin: 0 0 0.75rem;
+	}
+
+	.home-quality-lead {
+		margin: 0 0 1rem !important;
+		color: #44403c !important;
+		line-height: 1.65 !important;
+		font-size: 0.98rem !important;
+	}
+
+	.home-checklist {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.7rem;
+	}
+
+	.home-checklist li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.65rem;
+		margin: 0;
+		color: #292524;
+		font-weight: 600;
+		font-size: 0.98rem;
+		line-height: 1.45;
+	}
+
+	.home-checklist__icon {
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		font-size: 0.65rem;
+		font-weight: 900;
+		color: #fff;
+		background: linear-gradient(145deg, #15803d 0%, #22c55e 100%);
+		box-shadow: 0 2px 8px rgba(21, 128, 61, 0.35);
+		margin-top: 0.12rem;
+	}
+
+	.home-product-cards {
+		display: grid;
+		gap: 0.85rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.home-product-card {
+		border-radius: 14px;
+		padding: 1.05rem 1.2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.home-product-card--ikat {
+		background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #fff 100%);
+		border: 1px solid rgba(22, 101, 52, 0.2);
+		box-shadow: 0 2px 12px rgba(22, 101, 52, 0.06);
+	}
+
+	.home-product-card--ikat::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 4px;
+		background: linear-gradient(180deg, #166534, #22c55e);
+		border-radius: 4px 0 0 4px;
+	}
+
+	.home-product-card--bersih {
+		background: linear-gradient(135deg, #fff5f5 0%, #fff1f2 45%, #fff 100%);
+		border: 1px solid rgba(159, 18, 57, 0.2);
+		box-shadow: 0 2px 12px rgba(159, 18, 57, 0.06);
+	}
+
+	.home-product-card--bersih::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 4px;
+		background: linear-gradient(180deg, #7f1d1d, #be123c);
+		border-radius: 4px 0 0 4px;
+	}
+
+	.home-product-card__n {
+		font-weight: 800;
+		color: #1c1917;
+		font-size: 1.02rem;
+		padding-left: 0.35rem;
+	}
+
+	.home-product-card--ikat .home-product-card__n {
+		color: #14532d;
+	}
+
+	.home-product-card--bersih .home-product-card__n {
+		color: #881337;
+	}
+
+	.home-product-card__sub {
+		font-size: 0.88rem;
+		color: #57534e;
+		padding-left: 0.35rem;
+	}
+
+	.home-price-band {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		padding: 1.05rem 1.15rem;
+		background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+		border: 1px solid rgba(202, 138, 4, 0.35);
+		border-radius: 14px;
+		margin-bottom: 1rem;
+		box-shadow: 0 2px 12px rgba(202, 138, 4, 0.12);
+	}
+
+	.home-price-band__label {
+		font-size: 0.7rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #92400e;
+	}
+
+	.home-price-band__value {
+		font-size: 1.35rem;
+		font-weight: 800;
+		color: #7c2d12;
+		letter-spacing: -0.02em;
+	}
+
+	.home-price-band__hint {
+		font-size: 0.8rem;
+		color: #78716c;
+	}
+
+	.home-quality-price-link {
+		display: inline-flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		padding: 0.75rem 1.1rem;
+		border-radius: 12px;
+		text-decoration: none;
+		background: linear-gradient(135deg, #9f1239 0%, #be123c 100%);
+		color: #fff !important;
+		font-weight: 800;
+		font-size: 0.95rem;
+		box-shadow: 0 4px 16px rgba(159, 18, 57, 0.3);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease;
+	}
+
+	.home-quality-price-link:hover {
+		color: #fff !important;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 22px rgba(159, 18, 57, 0.38);
+	}
+
+	.home-quality-price-link__sub {
+		font-size: 0.72rem;
+		font-weight: 600;
+		opacity: 0.92;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.home-quality-price-link:hover {
+			transform: none;
+		}
+	}
+
+	/* Map */
+	.home-map-layout {
+		display: grid;
+		gap: 1.75rem;
+		align-items: start;
+	}
+
+	@media (min-width: 900px) {
+		.home-map-layout {
+			grid-template-columns: 0.9fr 1.1fr;
+			gap: 2rem;
+		}
+	}
+
+	.home-address {
+		font-style: normal;
+		font-size: 1.02rem;
+		line-height: 1.6;
+		color: #44403c;
+		margin: 0 0 1rem;
+	}
+
+	.home-map-note {
+		margin: 0;
+		color: #57534e;
+		line-height: 1.65;
+		font-size: 0.98rem;
+	}
+
+	.home-map-frame {
+		border-radius: var(--home-radius-lg);
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		box-shadow: 0 16px 48px rgba(28, 25, 23, 0.1);
+		line-height: 0;
+	}
+
+	.home-map-frame iframe {
+		width: 100%;
+		height: min(420px, 55vh);
+		display: block;
+	}
+
+	/* Markets */
+	.home-section--markets {
+		background: var(--home-cream);
+	}
+
+	.home-markets-lead {
+		margin: 0 0 1.5rem;
+		max-width: 40rem;
+		color: #57534e;
+		font-size: 1.02rem;
+	}
+
+	.home-region-grid {
+		display: grid;
+		gap: 1rem;
+	}
+
+	@media (min-width: 640px) {
+		.home-region-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1100px) {
+		.home-region-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.home-region-card {
+		background: #fff;
+		border-radius: var(--home-radius);
+		padding: 1.25rem 1.35rem;
+		border: 1px solid var(--color-border);
+		box-shadow: 0 2px 12px rgba(28, 25, 23, 0.04);
+		transition:
+			box-shadow 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.home-region-card:hover {
+		box-shadow: 0 8px 28px rgba(28, 25, 23, 0.08);
+		transform: translateY(-2px);
+	}
+
+	.home-region-card--alt {
+		background: linear-gradient(180deg, #fff 0%, #fff7ed 100%);
+		border-color: rgba(217, 119, 6, 0.15);
+	}
+
+	.home-region-card .home-h3 {
+		color: var(--home-rose);
+		font-size: 0.95rem;
+		margin-bottom: 0.75rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 2px solid rgba(159, 18, 57, 0.15);
+	}
+
+	.home-region-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+	}
+
+	.home-region-list li {
+		margin: 0;
+		font-size: 0.88rem;
+		line-height: 1.45;
+		color: #57534e;
+		padding-left: 0.85rem;
+		position: relative;
+	}
+
+	.home-region-list li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.55em;
+		width: 4px;
+		height: 4px;
+		border-radius: 50%;
+		background: var(--home-amber);
+	}
+
+	/* Blok ekspor — nuansa kulit & irisan bawang merah */
+	.home-export {
+		margin-top: 2.5rem;
+		display: grid;
+		gap: 1.75rem;
+		align-items: center;
+		padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.35rem, 4vw, 2.25rem);
+		border-radius: var(--home-radius-lg);
+		border: 1px solid rgba(190, 18, 60, 0.2);
+		background:
+			radial-gradient(ellipse 120% 80% at 100% 0%, rgba(254, 205, 211, 0.45) 0%, transparent 55%),
+			radial-gradient(ellipse 80% 60% at 0% 100%, rgba(254, 243, 199, 0.35) 0%, transparent 50%),
+			linear-gradient(165deg, #fff5f5 0%, #fff1f2 35%, #fdf4f8 70%, #fefce8 100%);
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.8) inset,
+			0 12px 40px rgba(127, 29, 29, 0.08);
+	}
+
+	@media (min-width: 768px) {
+		.home-export {
+			grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+			gap: 2rem 2.5rem;
+		}
+	}
+
+	.home-export__visual {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+	}
+
+	.home-export__onion {
+		position: relative;
+		width: min(11rem, 72vw);
+		aspect-ratio: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.home-export__onion-ring {
+		position: absolute;
+		border-radius: 50%;
+		aspect-ratio: 1;
+		height: auto;
+		border-style: solid;
+		border-width: 3px;
+		opacity: 0.95;
+	}
+
+	.home-export__onion-ring--1 {
+		width: 100%;
+		border-color: #7f1d1d;
+		background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.12), transparent 45%);
+		box-shadow: 0 4px 20px rgba(127, 29, 29, 0.2);
+	}
+
+	.home-export__onion-ring--2 {
+		width: 80%;
+		border-color: #9f1239;
+	}
+
+	.home-export__onion-ring--3 {
+		width: 62%;
+		border-color: #be123c;
+	}
+
+	.home-export__onion-ring--4 {
+		width: 44%;
+		border-color: #e11d48;
+	}
+
+	.home-export__onion-ring--5 {
+		width: 28%;
+		border-color: #fb7185;
+	}
+
+	.home-export__onion-core {
+		position: absolute;
+		width: 14%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: radial-gradient(circle at 30% 30%, #fff7ed, #fecdd3 60%, #fda4af 100%);
+		box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9);
+	}
+
+	.home-export__visual-caption {
+		margin: 0;
+		font-size: 0.7rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: #9f1239;
+		opacity: 0.85;
+	}
+
+	.home-export__main {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.85rem;
+		min-width: 0;
+	}
+
+	.home-export__eyebrow {
+		margin: 0;
+		font-size: 0.75rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: #991b1b;
+	}
+
+	.home-export__text {
+		margin: 0;
+		font-size: 1.05rem;
+		line-height: 1.65;
+		color: #44403c;
+		max-width: 40rem;
+	}
+
+	.home-export__countries {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem 0.5rem;
+	}
+
+	.home-export__countries li {
+		margin: 0;
+		padding: 0.35rem 0.75rem;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		color: #7f1d1d;
+		background: linear-gradient(180deg, #fff 0%, #fff1f2 100%);
+		border: 1px solid rgba(225, 29, 72, 0.25);
+		border-radius: 999px;
+		box-shadow: 0 1px 2px rgba(127, 29, 29, 0.06);
+	}
+
+	.home-export__cta {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-rows: auto auto;
+		column-gap: 0.75rem;
+		align-items: center;
+		margin-top: 0.35rem;
+		padding: 0.85rem 1.15rem;
+		border-radius: 14px;
+		text-decoration: none;
+		background: linear-gradient(135deg, #7f1d1d 0%, #9f1239 45%, #be123c 100%);
+		color: #fff;
+		box-shadow: 0 4px 18px rgba(159, 18, 57, 0.35);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease;
+	}
+
+	.home-export__cta:hover {
+		color: #fff;
+		transform: translateY(-2px);
+		box-shadow: 0 8px 28px rgba(159, 18, 57, 0.4);
+	}
+
+	.home-export__cta > span:first-of-type {
+		grid-column: 1;
+		grid-row: 1;
+		font-weight: 800;
+		font-size: 1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.home-export__cta-sub {
+		grid-column: 1;
+		grid-row: 2;
+		font-size: 0.72rem;
+		font-weight: 600;
+		opacity: 0.88;
+		line-height: 1.35;
+	}
+
+	.home-export__cta svg {
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		align-self: center;
+		opacity: 0.95;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.home-export__cta:hover {
+			transform: none;
+		}
+	}
+
+	/* Social proof */
+	.home-section--social-proof {
+		background: #fff;
+	}
+
+	.home-social-lead {
+		margin: 0 0 1.75rem;
+		color: #57534e;
+		max-width: 36rem;
+		line-height: 1.65;
+	}
+
+	.home-proof-grid {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	@media (min-width: 900px) {
+		.home-proof-grid {
+			grid-template-columns: 1.2fr 0.8fr;
+		}
+	}
+
+	.home-proof-card {
+		background: var(--home-cream);
+		border-radius: var(--home-radius-lg);
+		padding: 1.5rem;
+		border: 1px solid var(--color-border);
+	}
+
+	.home-proof-card--map {
+		background: #fff;
+		box-shadow: 0 8px 32px rgba(28, 25, 23, 0.06);
+	}
+
+	.home-proof-card .home-h3 {
+		margin-bottom: 0.5rem;
+	}
+
+	.home-proof-card__text {
+		margin: 0 0 1rem;
+		font-size: 0.95rem;
+		color: #57534e;
+		line-height: 1.55;
+	}
+
+	.home-proof-embed {
+		border-radius: 12px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		line-height: 0;
+	}
+
+	.home-proof-embed iframe {
+		width: 100%;
+		height: 240px;
+		display: block;
+	}
+
+	.home-proof-social-row {
+		margin-top: 0.25rem;
+	}
+
+	.home-proof-social-row :global(.sil) {
+		justify-content: flex-start;
+	}
+
+	/* CTA agent */
+	.home-section--cta-agent {
+		padding: clamp(2.5rem, 6vw, 3.5rem) 0;
+	}
+
+	.home-cta-agent {
+		position: relative;
+		background: linear-gradient(125deg, #9f1239 0%, #be185d 40%, #c2410c 100%);
+		border-radius: var(--home-radius-lg);
+		padding: clamp(1.75rem, 5vw, 2.75rem) clamp(1.5rem, 4vw, 2.5rem);
+		overflow: hidden;
+		color: #fff;
+		text-align: center;
+	}
+
+	.home-cta-agent__decor {
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+			radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.12) 0%, transparent 35%);
+		pointer-events: none;
+	}
+
+	.home-cta-agent .home-h2 {
+		position: relative;
+		max-width: 32rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.home-cta-agent__text {
+		position: relative;
+		margin: 0 auto 1.5rem;
+		max-width: 36rem;
+		font-size: 1.02rem;
+		line-height: 1.65;
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.home-cta-agent .home-btn {
+		position: relative;
+	}
+
+	/* Contact — satu kartu, grid rapi, sosial terpisah */
+	.home-section--contact {
+		padding-bottom: clamp(2.5rem, 6vw, 4rem);
+		background: var(--home-cream);
+	}
+
+	.home-contact-page-title {
+		text-align: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.home-contact-shell {
+		width: 100%;
+		background: #fff;
+		border: 1px solid var(--color-border);
+		border-radius: var(--home-radius-lg);
+		box-shadow: 0 4px 24px rgba(28, 25, 23, 0.06);
+		overflow: hidden;
+	}
+
+	.home-contact-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+
+	.home-contact-block--location {
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	@media (min-width: 768px) {
+		.home-contact-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.home-contact-block--location {
+			border-bottom: none;
+			border-right: 1px solid var(--color-border);
+		}
+	}
+
+	.home-contact-block {
+		padding: clamp(1.35rem, 4vw, 2rem) clamp(1.25rem, 4vw, 2rem);
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	.home-contact-block--channels {
+		background: linear-gradient(180deg, #fafaf9 0%, #fff 100%);
+	}
+
+	.home-contact-kicker {
+		margin: 0;
+		font-size: 0.72rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: #78716c;
+	}
+
+	.home-contact-address {
+		margin: 0;
+		font-style: normal;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #44403c;
+	}
+
+	.home-contact-hours {
+		margin: 0;
+		padding: 0.85rem 1rem;
+		background: var(--home-cream);
+		border-radius: 12px;
+		border: 1px solid var(--color-border);
+	}
+
+	.home-contact-hours__row {
+		display: grid;
+		gap: 0.25rem;
+	}
+
+	.home-contact-hours dt {
+		margin: 0;
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: #78716c;
+	}
+
+	.home-contact-hours dd {
+		margin: 0;
+		font-size: 1.05rem;
+		font-weight: 700;
+		color: var(--home-slate);
+	}
+
+	.home-contact-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.2rem;
+		padding: 0.9rem 1.1rem;
+		border-radius: 12px;
+		text-decoration: none;
+		font-weight: 700;
+		transition:
+			background 0.15s ease,
+			border-color 0.15s ease,
+			transform 0.15s ease;
+		border: 2px solid transparent;
+	}
+
+	.home-contact-btn:active {
+		transform: scale(0.99);
+	}
+
+	.home-contact-btn__label {
+		font-size: 0.7rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		opacity: 0.9;
+	}
+
+	.home-contact-btn__value {
+		font-size: 1.05rem;
+		font-weight: 800;
+		word-break: break-word;
+	}
+
+	.home-contact-btn--map {
+		background: #fff;
+		border-color: var(--color-border);
+		color: var(--home-slate);
+		text-align: center;
+		align-items: center;
+	}
+
+	.home-contact-btn--map:hover {
+		border-color: var(--home-rose);
+		color: var(--home-rose);
+	}
+
+	.home-contact-btn--wa {
+		background: #25d366;
+		color: #fff;
+		box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+	}
+
+	.home-contact-btn--wa:hover {
+		background: #1fb855;
+		color: #fff;
+	}
+
+	.home-contact-btn--wa .home-contact-btn__label {
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.home-contact-btn--mail {
+		background: #f5f5f4;
+		border-color: #e7e5e4;
+		color: var(--home-slate);
+	}
+
+	.home-contact-btn--mail:hover {
+		border-color: var(--home-rose);
+		color: var(--home-rose);
+		background: #fff;
+	}
+
+	.home-contact-social-wrap {
+		padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 4vw, 2rem);
+		border-top: 1px solid var(--color-border);
+		background: #fafaf9;
+	}
+
+	.home-contact-social-wrap :global(.sil) {
+		gap: 0.75rem;
+	}
+
+	.home-contact-social-wrap :global(.sil__link) {
+		width: 3.15rem;
+		height: 3.15rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.home-region-card,
+		.home-btn {
+			transition: none;
+		}
+
+		.home-region-card:hover {
+			transform: none;
+		}
+
+		.home-btn:active {
+			transform: none;
+		}
+	}
+</style>

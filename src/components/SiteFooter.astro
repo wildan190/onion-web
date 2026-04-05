@@ -1,0 +1,401 @@
+---
+import SocialIconLinks from './SocialIconLinks.astro';
+
+const navLinks = [
+	{ href: '/', label: 'Beranda' },
+	{ href: '/about', label: 'Tentang' },
+	{ href: '/info-harga-bawang-merah', label: 'Info Harga' },
+	{ href: '/exporter-red-onion-shallot-from-indonesia', label: 'Ekspor' },
+	{ href: '/privacy-policy', label: 'Kebijakan privasi' },
+	{ href: '/refund-and-returns-policy', label: 'Pengembalian & refund' },
+];
+
+const warehouseAddress =
+	'Manggihan Laban, RT.10/RW.03, Sambung, Kec. Godong, Kabupaten Grobogan, Jawa Tengah 58162, Indonesia.';
+
+const googleMapsPlaceUrl =
+	'https://www.google.com/maps/search/?api=1&query=mitrabawang.id+Supplier+Distributor+Bawang+Merah+Godong+Grobogan';
+
+const whatsappHref = 'https://wa.me/6281233624549';
+---
+
+<footer class="ft">
+	<div class="ft__stripe" aria-hidden="true"></div>
+	<div class="ft__wrap">
+		<div class="ft__main">
+			<div class="ft__brand">
+				<div class="ft__brand-top">
+					<img
+						class="ft__emblem"
+						src="/assets/img/emblem.png"
+						alt=""
+						width="56"
+						height="56"
+						decoding="async"
+					/>
+					<div class="ft__brand-text">
+						<span class="ft__title">mitrabawang.id</span>
+						<p class="ft__tagline">Supplier &amp; distributor bawang merah grosir untuk agen di seluruh Indonesia.</p>
+					</div>
+				</div>
+			</div>
+
+			<nav class="ft__nav" aria-labelledby="ft-nav-label">
+				<p id="ft-nav-label" class="ft__label">Menu</p>
+				<ul class="ft__list">
+					{
+						navLinks.map(({ href, label }) => (
+							<li>
+								<a href={href} class="ft__link">
+									<span class="ft__link-dot" aria-hidden="true"></span>
+									{label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<div class="ft__card">
+				<p class="ft__label">Alamat gudang</p>
+				<address class="ft__address">{warehouseAddress}</address>
+				<a class="ft__map" href={googleMapsPlaceUrl} target="_blank" rel="noopener noreferrer">
+					<span>Buka peta</span>
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+						<path
+							d="M7 17L17 7M17 7H9M17 7V15"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"></path>
+					</svg>
+				</a>
+			</div>
+
+			<div class="ft__contact">
+				<p class="ft__label">Hubungi kami</p>
+				<div class="ft__actions">
+					<a class="ft__pill ft__pill--wa" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+						<svg class="ft__pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+							<path
+								d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+							></path>
+						</svg>
+						WhatsApp
+					</a>
+					<a class="ft__pill ft__pill--mail" href="mailto:mitrabawang.id@gmail.com">
+						<svg class="ft__pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<path
+								d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+							<path d="m22 6-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							></path>
+						</svg>
+						Email
+					</a>
+				</div>
+				<p class="ft__label ft__label--spaced">Media sosial</p>
+				<div class="ft__social">
+					<SocialIconLinks />
+				</div>
+			</div>
+		</div>
+
+		<div class="ft__bar">
+			<p class="ft__copy">&copy; {new Date().getFullYear()} mitrabawang.id · Grobogan, Jawa Tengah</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.ft {
+		margin-top: auto;
+		position: relative;
+		background: linear-gradient(180deg, #f5f5f4 0%, #e7e5e4 100%);
+		color: #1c1917;
+	}
+
+	.ft__stripe {
+		height: 4px;
+		width: 100%;
+		background: linear-gradient(90deg, #9f1239 0%, #c2410c 50%, #ea580c 100%);
+	}
+
+	.ft__wrap {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 1.25rem;
+	}
+
+	.ft__main {
+		display: grid;
+		gap: 2rem;
+		padding: 2.75rem 0 2rem;
+	}
+
+	@media (min-width: 640px) {
+		.ft__main {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			align-items: start;
+		}
+
+		.ft__brand {
+			grid-column: 1 / -1;
+		}
+
+		.ft__contact {
+			grid-column: 1 / -1;
+		}
+
+		.ft__social :global(.sil) {
+			justify-content: center;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.ft__main {
+			grid-template-columns: 1.15fr 0.85fr 1.05fr 1fr;
+			gap: 2rem 2.5rem;
+		}
+
+		.ft__brand {
+			grid-column: auto;
+		}
+
+		.ft__contact {
+			grid-column: auto;
+		}
+
+		.ft__social :global(.sil) {
+			justify-content: flex-start;
+		}
+	}
+
+	.ft__brand-top {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	.ft__emblem {
+		width: 3.5rem;
+		height: 3.5rem;
+		object-fit: contain;
+		flex-shrink: 0;
+		border-radius: 14px;
+		background: #fff;
+		padding: 0.35rem;
+		box-shadow: 0 2px 12px rgba(28, 25, 23, 0.08);
+		border: 1px solid rgba(231, 229, 228, 0.9);
+	}
+
+	.ft__title {
+		display: block;
+		font-size: 1.35rem;
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: #1c1917;
+		line-height: 1.2;
+		margin-bottom: 0.4rem;
+	}
+
+	.ft__tagline {
+		margin: 0;
+		font-size: 0.94rem;
+		line-height: 1.55;
+		color: #57534e;
+		max-width: 22rem;
+	}
+
+	.ft__label {
+		margin: 0 0 0.85rem;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		color: #44403c;
+		letter-spacing: -0.01em;
+	}
+
+	.ft__label--spaced {
+		margin-top: 1.25rem;
+		margin-bottom: 0.65rem;
+	}
+
+	.ft__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+	}
+
+	.ft__list li {
+		margin: 0;
+	}
+
+	.ft__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.4rem 0;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: #57534e;
+		text-decoration: none;
+		border-radius: 6px;
+		transition:
+			color 0.15s ease,
+			transform 0.15s ease;
+	}
+
+	.ft__link:hover {
+		color: var(--color-accent);
+		transform: translateX(3px);
+	}
+
+	.ft__link-dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #d6d3d1;
+		flex-shrink: 0;
+		transition: background 0.15s ease;
+	}
+
+	.ft__link:hover .ft__link-dot {
+		background: var(--color-accent);
+	}
+
+	.ft__card {
+		background: #fff;
+		border: 1px solid #e7e5e4;
+		border-radius: 16px;
+		padding: 1.25rem 1.35rem;
+		box-shadow: 0 4px 20px rgba(28, 25, 23, 0.05);
+	}
+
+	.ft__address {
+		margin: 0 0 1rem;
+		font-style: normal;
+		font-size: 0.9rem;
+		line-height: 1.6;
+		color: #57534e;
+	}
+
+	.ft__map {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: #fff;
+		background: linear-gradient(135deg, #9f1239 0%, #be123c 100%);
+		text-decoration: none;
+		padding: 0.55rem 1rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 10px rgba(159, 18, 57, 0.25);
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease;
+	}
+
+	.ft__map:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 4px 14px rgba(159, 18, 57, 0.3);
+		color: #fff;
+	}
+
+	.ft__contact {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.ft__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.ft__pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.65rem 1rem;
+		font-size: 0.9rem;
+		font-weight: 700;
+		text-decoration: none;
+		border-radius: 12px;
+		border: 1px solid transparent;
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease;
+	}
+
+	.ft__pill:hover {
+		transform: translateY(-1px);
+	}
+
+	.ft__pill-icon {
+		flex-shrink: 0;
+	}
+
+	.ft__pill--wa {
+		background: #22c55e;
+		color: #fff;
+		box-shadow: 0 2px 12px rgba(34, 197, 94, 0.35);
+	}
+
+	.ft__pill--wa:hover {
+		background: #16a34a;
+		color: #fff;
+		box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4);
+	}
+
+	.ft__pill--mail {
+		background: #fff;
+		color: #44403c;
+		border-color: #e7e5e4;
+	}
+
+	.ft__pill--mail:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.ft__social :global(.sil) {
+		justify-content: flex-start;
+		gap: 0.5rem;
+	}
+
+	.ft__social :global(.sil__link) {
+		width: 2.75rem;
+		height: 2.75rem;
+		background: #fff;
+	}
+
+	.ft__bar {
+		border-top: 1px solid #d6d3d1;
+		padding: 1.15rem 0 1.75rem;
+	}
+
+	.ft__copy {
+		margin: 0;
+		text-align: center;
+		font-size: 0.8125rem;
+		color: #78716c;
+		line-height: 1.5;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.ft__link:hover,
+		.ft__map:hover,
+		.ft__pill:hover {
+			transform: none;
+		}
+	}
+</style>

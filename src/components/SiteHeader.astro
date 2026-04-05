@@ -1,0 +1,482 @@
+---
+const pathname = Astro.url.pathname;
+
+const links = [
+	{ href: '/', label: 'Beranda' },
+	{ href: '/about', label: 'Tentang' },
+	{ href: '/info-harga-bawang-merah', label: 'Info Harga' },
+	{ href: '/exporter-red-onion-shallot-from-indonesia', label: 'Ekspor' },
+];
+
+function isActive(href: string) {
+	if (href === '/') return pathname === '/';
+	return pathname === href || pathname.startsWith(href + '/');
+}
+
+const linkItems = links.map(({ href, label }) => ({
+	href,
+	label,
+	active: isActive(href),
+}));
+---
+
+<!-- Drawer harus di luar <header>: backdrop-filter pada header membuat fixed anak terikat ke header (terpotong). -->
+<div class="header-root" data-mobile-nav>
+	<header class="site-header">
+		<div class="inner">
+			<a class="brand" href="/" aria-label="mitrabawang.id — beranda">
+				<img
+					class="brand-logo"
+					src="/assets/img/emblem.png"
+					alt=""
+					width="40"
+					height="40"
+					decoding="async"
+				/>
+				<span class="brand-text">mitrabawang<span class="tld">.id</span></span>
+			</a>
+
+			<nav class="nav nav-desktop" aria-label="Menu utama">
+				<ul>
+					{
+						linkItems.map(({ href, label, active }) => (
+							<li>
+								<a href={href} class:list={[{ active }]}>{label}</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<button
+				type="button"
+				class="menu-toggle"
+				aria-label="Buka menu navigasi"
+				aria-expanded="false"
+				aria-controls="drawer-panel"
+			>
+				<span class="menu-toggle__lines" aria-hidden="true">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+		</div>
+	</header>
+
+	<div class="drawer" id="mobile-drawer" aria-hidden="true" data-drawer>
+		<button type="button" class="drawer__backdrop" tabindex="-1" aria-label="Tutup menu" data-drawer-close
+		></button>
+		<div
+			class="drawer__panel"
+			id="drawer-panel"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Menu navigasi"
+			tabindex="-1"
+		>
+			<div class="drawer__head">
+				<span class="drawer__title">Menu</span>
+				<button type="button" class="drawer__close" aria-label="Tutup menu" data-drawer-close>
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+						<path
+							d="M6 6l12 12M18 6L6 18"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"></path>
+					</svg>
+				</button>
+			</div>
+			<nav class="nav nav-drawer" aria-label="Menu navigasi mobile">
+				<ul class="nav-drawer__list">
+					{
+						linkItems.map(({ href, label, active }) => (
+							<li>
+								<a href={href} class:list={['nav-drawer__link', { active }]} data-drawer-link>
+									{label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<script>
+	function initMobileNav() {
+		const root = document.querySelector('[data-mobile-nav]');
+		if (!root || root.dataset.navSetup === '1') return;
+
+		const toggle = root.querySelector('.menu-toggle');
+		const drawer = root.querySelector('[data-drawer]');
+		const panel = root.querySelector('#drawer-panel');
+		const closers = root.querySelectorAll('[data-drawer-close]');
+		const drawerLinks = root.querySelectorAll('[data-drawer-link]');
+
+		if (!toggle || !drawer || !panel) return;
+
+		root.dataset.navSetup = '1';
+
+		let previouslyFocused = null;
+
+		function open() {
+			previouslyFocused = document.activeElement;
+			drawer.classList.add('is-open');
+			root.classList.add('is-drawer-open');
+			drawer.setAttribute('aria-hidden', 'false');
+			toggle.setAttribute('aria-expanded', 'true');
+			toggle.setAttribute('aria-label', 'Tutup menu navigasi');
+			document.body.classList.add('drawer-open');
+			panel.removeAttribute('inert');
+			panel.focus();
+		}
+
+		function close() {
+			drawer.classList.remove('is-open');
+			root.classList.remove('is-drawer-open');
+			drawer.setAttribute('aria-hidden', 'true');
+			toggle.setAttribute('aria-expanded', 'false');
+			toggle.setAttribute('aria-label', 'Buka menu navigasi');
+			document.body.classList.remove('drawer-open');
+			panel.setAttribute('inert', '');
+			if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus();
+		}
+
+		panel.setAttribute('inert', '');
+
+		toggle.addEventListener('click', () => {
+			if (drawer.classList.contains('is-open')) close();
+			else open();
+		});
+
+		closers.forEach((el) => el.addEventListener('click', close));
+
+		drawerLinks.forEach((a) => a.addEventListener('click', close));
+	}
+
+	if (!('__mbwDrawerEsc' in window)) {
+		window.__mbwDrawerEsc = true;
+		document.addEventListener('keydown', (e) => {
+			if (e.key !== 'Escape') return;
+			const drawer = document.querySelector('[data-drawer].is-open');
+			if (!drawer) return;
+			e.preventDefault();
+			const closer = drawer.querySelector('[data-drawer-close]');
+			if (closer instanceof HTMLElement) closer.click();
+		});
+	}
+
+	initMobileNav();
+	document.addEventListener('astro:page-load', initMobileNav);
+</script>
+
+<style>
+	.header-root {
+		position: relative;
+		z-index: 50;
+	}
+
+	.site-header {
+		position: sticky;
+		top: 0;
+		background: rgba(250, 247, 242, 0.97);
+		border-bottom: 1px solid var(--color-border);
+		/* Hindari backdrop-filter di sini: membuat anak position:fixed terikat ke header dan drawer terpotong. */
+	}
+
+	.inner {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0.65rem 1rem;
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
+		gap: 0.75rem;
+		justify-content: space-between;
+	}
+
+	.brand {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		text-decoration: none;
+		color: var(--color-text);
+		font-weight: 700;
+		font-size: clamp(0.95rem, 3.5vw, 1.125rem);
+		letter-spacing: -0.02em;
+		min-width: 0;
+		flex: 1 1 auto;
+	}
+
+	.brand:hover {
+		color: var(--color-accent);
+	}
+
+	.brand-logo {
+		width: 2.35rem;
+		height: 2.35rem;
+		object-fit: contain;
+		flex-shrink: 0;
+		display: block;
+	}
+
+	.brand-text {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		min-width: 0;
+	}
+
+	.tld {
+		color: var(--color-muted);
+		font-weight: 600;
+	}
+
+	.nav-desktop {
+		display: none;
+	}
+
+	@media (min-width: 768px) {
+		.nav-desktop {
+			display: block;
+			flex: 0 0 auto;
+		}
+	}
+
+	.nav-desktop ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem 0.75rem;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	.nav-desktop a {
+		display: inline-block;
+		padding: 0.4rem 0.65rem;
+		border-radius: 8px;
+		text-decoration: none;
+		color: var(--color-muted);
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+
+	.nav-desktop a:hover {
+		color: var(--color-accent);
+		background: var(--color-accent-soft);
+	}
+
+	.nav-desktop a.active {
+		color: var(--color-accent);
+		background: var(--color-accent-soft);
+	}
+
+	.menu-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 auto;
+		width: 2.65rem;
+		height: 2.65rem;
+		padding: 0;
+		border: 1px solid var(--color-border);
+		border-radius: 10px;
+		background: var(--color-surface);
+		color: var(--color-text);
+		cursor: pointer;
+		transition:
+			background 0.15s,
+			border-color 0.15s;
+	}
+
+	.menu-toggle:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.menu-toggle__lines {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		width: 1.2rem;
+	}
+
+	.menu-toggle__lines span {
+		display: block;
+		height: 2px;
+		width: 100%;
+		background: currentColor;
+		border-radius: 1px;
+		transition:
+			transform 0.2s ease,
+			opacity 0.2s ease;
+	}
+
+	.header-root.is-drawer-open .menu-toggle__lines span:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+
+	.header-root.is-drawer-open .menu-toggle__lines span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.header-root.is-drawer-open .menu-toggle__lines span:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
+	@media (min-width: 768px) {
+		.menu-toggle {
+			display: none;
+		}
+
+		.menu-toggle__lines span {
+			transition: none;
+		}
+
+		.header-root.is-drawer-open .menu-toggle__lines span {
+			transform: none;
+			opacity: 1;
+		}
+	}
+
+	/* Fixed ke viewport: induk .header-root tanpa filter/transform. */
+	.drawer {
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+		pointer-events: none;
+		visibility: hidden;
+	}
+
+	.drawer.is-open {
+		pointer-events: auto;
+		visibility: visible;
+	}
+
+	.drawer__backdrop {
+		position: absolute;
+		inset: 0;
+		border: none;
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(28, 25, 23, 0.5);
+		cursor: pointer;
+		opacity: 0;
+		transition: opacity 0.25s ease;
+	}
+
+	.drawer.is-open .drawer__backdrop {
+		opacity: 1;
+	}
+
+	.drawer__panel {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: min(20rem, 90vw);
+		max-width: 100%;
+		background: var(--color-surface);
+		border-left: 1px solid var(--color-border);
+		box-shadow: -8px 0 32px rgba(28, 25, 23, 0.15);
+		display: flex;
+		flex-direction: column;
+		transform: translateX(100%);
+		transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+		outline: none;
+	}
+
+	.drawer.is-open .drawer__panel {
+		transform: translateX(0);
+	}
+
+	.drawer__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 1rem 1rem 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		flex-shrink: 0;
+	}
+
+	.drawer__title {
+		font-weight: 700;
+		font-size: 1.05rem;
+		color: var(--color-text);
+	}
+
+	.drawer__close {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border: none;
+		border-radius: 8px;
+		background: transparent;
+		color: var(--color-muted);
+		cursor: pointer;
+	}
+
+	.drawer__close:hover {
+		color: var(--color-accent);
+		background: var(--color-accent-soft);
+	}
+
+	.nav-drawer {
+		flex: 1 1 auto;
+		min-height: 0;
+		padding: 0;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Spesifisitas tinggi agar tidak ketimpa global.css (ul padding / warna) */
+	.nav-drawer__list {
+		list-style: none !important;
+		margin: 0 !important;
+		padding: 0.5rem 0 1.5rem !important;
+	}
+
+	.nav-drawer__list li {
+		margin: 0 !important;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.nav-drawer__list li:last-child {
+		border-bottom: none;
+	}
+
+	.nav-drawer__link {
+		display: block !important;
+		padding: 0.95rem 1.25rem !important;
+		text-decoration: none !important;
+		color: var(--color-text) !important;
+		font-size: 1rem !important;
+		font-weight: 500 !important;
+		line-height: 1.4 !important;
+	}
+
+	.nav-drawer__link:hover {
+		background: var(--color-bg) !important;
+		color: var(--color-accent) !important;
+	}
+
+	.nav-drawer__link.active {
+		color: var(--color-accent) !important;
+		background: var(--color-accent-soft) !important;
+	}
+</style>
+
+<style is:global>
+	body.drawer-open {
+		overflow: hidden;
+	}
+</style>

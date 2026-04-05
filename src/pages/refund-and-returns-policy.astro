@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lastUpdated = '5 April 2026';
+const whatsappHref = 'https://wa.me/6281233624549';
+const whatsappDisplay = '0812-3362-4549';
+const email = 'mitrabawang.id@gmail.com';
+const warehouseAddress =
+	'Manggihan Laban, RT.10/RW.03, Sambung, Kec. Godong, Kabupaten Grobogan, Jawa Tengah 58162, Indonesia.';
+---
+
+<Layout
+	title="Kebijakan Pengembalian & Refund — mitrabawang.id"
+	description="Syarat pengembalian barang dan refund mitrabawang.id: batas waktu, bukti, prosedur, dan kontak."
+>
+	<div class="page-shell policy">
+		<h1>Kebijakan Pengembalian &amp; Refund</h1>
+		<p class="policy__updated">Terakhir diperbarui: {lastUpdated}</p>
+
+		<div class="prose-block policy__body">
+			<h2>1. Pendahuluan</h2>
+			<p>
+				mitrabawang.id berkomitmen untuk memberikan produk bawang merah berkualitas terbaik kepada setiap pelanggan.
+				Namun, kami memahami bahwa dalam kondisi tertentu, pengembalian barang atau refund mungkin diperlukan.
+			</p>
+			<p>
+				Kebijakan ini menjelaskan syarat dan ketentuan terkait pengembalian barang dan pengajuan refund.
+			</p>
+
+			<h2>2. Ketentuan Umum Pengembalian</h2>
+			<p>Pengembalian hanya dapat dilakukan apabila:</p>
+			<ul>
+				<li>Barang yang diterima tidak sesuai pesanan</li>
+				<li>Barang mengalami kerusakan signifikan saat pengiriman</li>
+				<li>Produk yang diterima tidak layak jual (busuk parah / rusak berat)</li>
+			</ul>
+			<p class="policy__note">
+				<strong>Catatan:</strong> Karena bawang merah adalah produk alami, variasi ukuran, warna, atau sedikit kerusakan
+				ringan tidak termasuk dalam kategori cacat.
+			</p>
+
+			<h2>3. Batas Waktu Pengajuan</h2>
+			<ul>
+				<li>Pengajuan pengembalian wajib dilakukan maksimal 1 × 24 jam setelah barang diterima</li>
+				<li>Lewat dari waktu tersebut, komplain tidak dapat diproses</li>
+			</ul>
+			<p class="policy__note">
+				<strong>Sertakan bukti:</strong>
+			</p>
+			<ul>
+				<li>Foto / video kondisi barang</li>
+				<li>Bukti penerimaan barang</li>
+			</ul>
+
+			<h2>4. Prosedur Pengembalian</h2>
+			<p>Langkah-langkah:</p>
+			<ol>
+				<li>Hubungi kami melalui WhatsApp atau kontak resmi</li>
+				<li>Kirim bukti foto/video kondisi barang</li>
+				<li>Tim kami akan melakukan verifikasi</li>
+				<li>Jika disetujui, kami akan memberikan instruksi lanjutan</li>
+			</ol>
+
+			<h2>5. Opsi Penyelesaian</h2>
+			<p>Jika pengajuan disetujui, pelanggan dapat memilih:</p>
+
+			<h3 class="policy__h3">a. Penggantian Barang</h3>
+			<ul>
+				<li>Barang akan diganti pada pengiriman berikutnya</li>
+				<li>Disesuaikan dengan ketersediaan stok</li>
+			</ul>
+
+			<h3 class="policy__h3">b. Refund (Pengembalian Dana)</h3>
+			<ul>
+				<li>Refund dilakukan sesuai nilai barang yang bermasalah</li>
+				<li>Proses maksimal 2–5 hari kerja</li>
+			</ul>
+
+			<h2>6. Biaya Pengiriman</h2>
+			<ul>
+				<li>Jika kesalahan dari pihak kami → biaya ditanggung oleh mitrabawang.id</li>
+				<li>Jika bukan kesalahan kami → biaya ditanggung pembeli</li>
+			</ul>
+
+			<h2>7. Barang yang Tidak Dapat Dikembalikan</h2>
+			<p>Kami tidak menerima pengembalian untuk kondisi berikut:</p>
+			<ul>
+				<li>Barang sudah digunakan / dijual kembali</li>
+				<li>Kerusakan akibat penyimpanan yang tidak sesuai</li>
+				<li>Pengajuan melebihi batas waktu</li>
+				<li>Tidak ada bukti pendukung</li>
+			</ul>
+
+			<h2>8. Penolakan Klaim</h2>
+			<p>Kami berhak menolak pengajuan apabila:</p>
+			<ul>
+				<li>Bukti tidak valid</li>
+				<li>Kerusakan tidak signifikan</li>
+				<li>Tidak sesuai dengan kebijakan</li>
+			</ul>
+
+			<h2>9. Kontak Kami</h2>
+			<p>Untuk pengajuan pengembalian atau refund, silakan hubungi:</p>
+			<ul class="policy__contact-list">
+				<li>
+					<strong>WhatsApp:</strong>{' '}
+					<a href={whatsappHref} target="_blank" rel="noopener noreferrer">{whatsappDisplay}</a>
+				</li>
+				<li>
+					<strong>Email:</strong>{' '}
+					<a href={`mailto:${email}`}>{email}</a>
+				</li>
+				<li>
+					<strong>Alamat:</strong>{' '}
+					{warehouseAddress}
+				</li>
+			</ul>
+
+			<h2>10. Penutup</h2>
+			<p>
+				Kami selalu berusaha memberikan pelayanan terbaik dan menjaga kualitas produk. Kebijakan ini dibuat untuk
+				memastikan transparansi, keadilan, dan kenyamanan bagi kedua belah pihak.
+			</p>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.policy__updated {
+		margin: -0.35rem 0 1.25rem;
+		font-size: 0.95rem;
+		color: var(--color-muted);
+	}
+
+	.policy__body .policy__h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		margin: 1.15rem 0 0.45rem;
+		color: var(--color-text);
+	}
+
+	.policy__body .policy__h3:first-of-type {
+		margin-top: 0.5rem;
+	}
+
+	.policy__note {
+		background: var(--color-accent-soft);
+		padding: 0.85rem 1rem;
+		border-radius: 8px;
+		border: 1px solid #fbcfe8;
+		margin: 1rem 0 !important;
+		color: var(--color-text) !important;
+		line-height: 1.6;
+	}
+
+	.policy__contact-list {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+	}
+
+	.policy__contact-list li {
+		margin-bottom: 0.65rem;
+	}
+
+	.policy__contact-list li:last-child {
+		margin-bottom: 0;
+	}
+</style>
