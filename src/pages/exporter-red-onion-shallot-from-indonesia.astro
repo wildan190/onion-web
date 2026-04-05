@@ -1,5 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import JsonLd from '../components/JsonLd.astro';
+import {
+	logoUrl,
+	orgId,
+	postalAddressBlock,
+	sameAsProfiles,
+	siteEmail,
+	siteOrigin,
+	siteTelephoneE164,
+	websiteId,
+} from '../data/schema-site';
 
 const destinations = [
 	{ country: 'Thailand', value: '$2.08M', marketType: 'Main Market', accent: 'th' as const },
@@ -15,12 +26,125 @@ const stats = [
 ];
 
 const whatsappHref = 'https://wa.me/6281233624549';
+
+const origin = siteOrigin(Astro.site);
+const organizationRef = orgId(origin);
+const websiteRef = websiteId(origin);
+const pagePath = '/exporter-red-onion-shallot-from-indonesia/';
+const pageUrl = `${origin}${pagePath}`;
+
+const pageTitle = 'Exporter Shallot (Red Onion) From Indonesia | mitrabawang.id';
+const pageDescription =
+	'Indonesia shallot and red onion export: global demand, production regions, market data, and supply from mitrabawang.id — fresh (untingan) and clean shallots for international buyers.';
+
+const exporterStructuredData = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': organizationRef,
+			name: 'mitrabawang.id',
+			url: `${origin}/`,
+			logo: logoUrl(origin),
+			email: siteEmail,
+			telephone: siteTelephoneE164,
+			address: postalAddressBlock(),
+			sameAs: [...sameAsProfiles],
+		},
+		{
+			'@type': 'WebSite',
+			'@id': websiteRef,
+			url: `${origin}/`,
+			name: 'mitrabawang.id',
+			inLanguage: ['id', 'en'],
+			publisher: { '@id': organizationRef },
+		},
+		{
+			'@type': 'WebPage',
+			'@id': `${pageUrl}#webpage`,
+			url: pageUrl,
+			name: pageTitle,
+			description: pageDescription,
+			inLanguage: 'en',
+			isPartOf: { '@id': websiteRef },
+			publisher: { '@id': organizationRef },
+			about: {
+				'@type': 'Thing',
+				name: 'Indonesian shallot and red onion export',
+			},
+		},
+		{
+			'@type': 'BreadcrumbList',
+			'@id': `${pageUrl}#breadcrumb`,
+			itemListElement: [
+				{
+					'@type': 'ListItem',
+					position: 1,
+					name: 'Home',
+					item: `${origin}/`,
+				},
+				{
+					'@type': 'ListItem',
+					position: 2,
+					name: 'Exporter — shallot from Indonesia',
+					item: pageUrl,
+				},
+			],
+		},
+		{
+			'@type': 'FAQPage',
+			'@id': `${pageUrl}#faq`,
+			mainEntity: [
+				{
+					'@type': 'Question',
+					name: 'Why choose Indonesian shallots for export?',
+					acceptedAnswer: {
+						'@type': 'Answer',
+						text: 'Because they offer high quality, strong flavor, and long shelf life.',
+					},
+				},
+				{
+					'@type': 'Question',
+					name: 'What markets import Indonesian shallots the most?',
+					acceptedAnswer: {
+						'@type': 'Answer',
+						text: 'Thailand, Malaysia, Singapore, and Japan.',
+					},
+				},
+				{
+					'@type': 'Question',
+					name: 'What is the shelf life of Indonesian shallots?',
+					acceptedAnswer: {
+						'@type': 'Answer',
+						text: 'Up to 6 months for properly dried shallots.',
+					},
+				},
+				{
+					'@type': 'Question',
+					name: 'What types of shallots are exported?',
+					acceptedAnswer: {
+						'@type': 'Answer',
+						text: 'Fresh (untingan) and clean (without leaves).',
+					},
+				},
+				{
+					'@type': 'Question',
+					name: 'Is shallot export a profitable business?',
+					acceptedAnswer: {
+						'@type': 'Answer',
+						text: 'Yes, due to rising global demand and stable production.',
+					},
+				},
+			],
+		},
+	],
+};
 ---
 
 <Layout
 	lang="en"
-	title="Exporter Shallot (Red Onion) From Indonesia | mitrabawang.id"
-	description="Indonesia shallot and red onion export: global demand, production regions, market data, and supply from mitrabawang.id — fresh (untingan) and clean shallots for international buyers."
+	title={pageTitle}
+	description={pageDescription}
 	keywords="Indonesia shallot export, red onion exporter, shallot supplier Indonesia, bulk shallot, fresh shallot, Bawang Merah, mitrabawang.id"
 >
 	<div class="exp">
@@ -353,6 +477,8 @@ const whatsappHref = 'https://wa.me/6281233624549';
 			</footer>
 		</div>
 	</div>
+
+	<JsonLd schema={exporterStructuredData} />
 </Layout>
 
 <style>
