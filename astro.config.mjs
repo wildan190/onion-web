@@ -31,28 +31,21 @@ function serializeSitemapItem(item) {
 
 	const slug = pathname.replace(/\/+$/, '') || '/';
 
-	let changefreq = 'weekly';
 	let priority = 0.75;
 
 	if (slug === '/') {
-		changefreq = 'daily';
 		priority = 1;
 	} else if (slug === '/info-harga-bawang-merah') {
-		changefreq = 'daily';
 		priority = 0.95;
 	} else if (slug === '/about' || slug === '/exporter-red-onion-shallot-from-indonesia') {
-		changefreq = 'weekly';
 		priority = 0.85;
 	} else if (slug === '/privacy-policy' || slug === '/refund-and-returns-policy') {
-		changefreq = 'yearly';
 		priority = 0.35;
 	}
 
 	return {
 		url: item.url,
 		links: item.links,
-		lastmod: new Date(),
-		changefreq,
 		priority,
 	};
 }
