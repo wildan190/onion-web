@@ -74,15 +74,15 @@ const priceStructuredData = {
 ---
 
 <Layout
-	title={`Info Harga Bawang Merah 1 kg Hari ini — ${buildDate} | mitrabawang.id`}
-	description="Info harga bawang merah per kg hari ini di mitrabawang.id. Update harian pkl. 10.30 WIB. Grade besar, sedang, kecil."
+	title={`Info Harga Bawang Merah 1 kg Hari ini — ${buildDate}`}
+	description={`Info harga bawang merah per kg hari ini (${buildDate}) di mitrabawang.id. Update pkl. 10.30 WIB. Grade besar, sedang, kecil.`}
 >
 	<div class="page-shell price-page">
 		<h1 class="price-page__title">
 			Info Harga Bawang Merah 1 kg Hari ini
 			<span class="price-page__date" id="page-date">{buildDate}</span>
 		</h1>
-		<p class="price-page__meta">Harga bawang merah di-update setiap hari pkl. 10.30 WIB</p>
+		<p class="price-page__meta">Harga bawang merah di-update hari <span id="meta-date">{buildDate}</span> pkl. 10.30 WIB</p>
 
 		<div class="price-table-wrap">
 			<table class="price-table">
@@ -114,13 +114,11 @@ const priceStructuredData = {
 				<p class="price-cta__eyebrow">mitrabawang.id</p>
 				<h2 id="price-cta-title" class="price-cta__title">Belanja grosir dari supplier tangan pertama</h2>
 				<p class="price-cta__text">
-					Harga di atas adalah referensi per kg. Untuk order grosir, variasi grade, dan jadwal kirim — hubungi kami
-					atau mulai dari halaman utama.
+					ingin membeli bawang merah langsung dari supplier tangan pertama dengan harga grosir?
 				</p>
 				<div class="price-cta__actions">
 					<a class="price-cta__btn price-cta__btn--primary" href="/">
-						<span class="price-cta__btn-main">Halaman utama &amp; info grosir</span>
-						<span class="price-cta__btn-hint">Jual bawang merah grosir · mitrabawang.id</span>
+						<span class="price-cta__btn-main">Jual bawang merah grosir</span>
 						<svg class="price-cta__btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 							<path
 								d="M5 12h14m0 0l-6-6m6 6l-6 6"
@@ -137,8 +135,7 @@ const priceStructuredData = {
 							></path>
 						</svg>
 						<span class="price-cta__wa-text">
-							<span class="price-cta__wa-label">Tanya harga &amp; stok</span>
-							<span class="price-cta__wa-sub">Chat WhatsApp</span>
+							<span class="price-cta__wa-label">0812-3362-4549</span>
 						</span>
 					</a>
 				</div>
@@ -164,8 +161,10 @@ const priceStructuredData = {
 	}
 	var el = document.getElementById('page-date');
 	if (el) el.textContent = formatIdDate(new Date());
+	var metaEl = document.getElementById('meta-date');
+	if (metaEl) metaEl.textContent = formatIdDate(new Date());
 	document.title =
-		'Info Harga Bawang Merah 1 kg Hari ini — ' + formatIdDate(new Date()) + ' | mitrabawang.id';
+		'Info Harga Bawang Merah 1 kg Hari ini — ' + formatIdDate(new Date());
 </script>
 
 <style>
