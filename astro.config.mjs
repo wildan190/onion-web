@@ -12,7 +12,7 @@ const site = 'https://mitrabawang.id';
 const publicPageUrls = [
 	`${site}/`,
 	`${site}/about/`,
-	`${site}/info-harga-bawang-merah/`,
+	`${site}/harga-bawang-merah-hari-ini/`,
 	`${site}/exporter-red-onion-shallot-from-indonesia/`,
 	`${site}/privacy-policy/`,
 	`${site}/refund-and-returns-policy/`,
@@ -35,7 +35,7 @@ function serializeSitemapItem(item) {
 
 	if (slug === '/') {
 		priority = 1;
-	} else if (slug === '/info-harga-bawang-merah') {
+	} else if (slug === '/harga-bawang-merah-hari-ini') {
 		priority = 0.95;
 	} else if (slug === '/about' || slug === '/exporter-red-onion-shallot-from-indonesia') {
 		priority = 0.85;
