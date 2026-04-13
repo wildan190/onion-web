@@ -242,37 +242,6 @@ const homeStructuredData = {
 				</div>
 			</div>
 		</section>
-
-		<!-- Cerita / misi -->
-		<section class="home-section home-section--story" aria-labelledby="story-heading">
-			<div class="home-wrap">
-				<div class="home-story">
-					<div class="home-story__intro">
-						<h2 id="story-heading" class="home-h2" style="display:none;">Cerita Kami</h2>
-					</div>
-					<p class="home-story__photos-caption">
-						Cuplikan aktivitas, lingkungan gudang, dan perjalanan produk kami.
-					</p>
-					<div
-						class="home-story__photos"
-						role="region"
-						aria-roledescription="carousel"
-						aria-label="Foto aktivitas dan lingkungan — geser untuk melihat lainnya"
-					>
-						{
-							homeStoryPhotos.map(({ src, alt }) => (
-								<figure class="home-story__photo">
-									<img src={src} alt={alt} width="1200" height="750" loading="lazy" decoding="async" />
-								</figure>
-							))
-						}
-					</div>
-
-
-				</div>
-			</div>
-		</section>
-
 		<!-- Kualitas — nuansa panen & bawang merah -->
 		<section class="home-section home-section--quality" id="kualitas" aria-labelledby="quality-heading">
 			<div class="home-quality-skin" aria-hidden="true"></div>
@@ -459,7 +428,35 @@ const homeStructuredData = {
 				</div>
 			</div>
 		</section>
+				<!-- Cerita / misi -->
+		<section class="home-section home-section--story" aria-labelledby="story-heading">
+			<div class="home-wrap">
+				<div class="home-story">
+					<div class="home-story__intro">
+						<h2 id="story-heading" class="home-h2" style="display:none;">Cerita Kami</h2>
+					</div>
+					<p class="home-story__photos-caption">
+						Cuplikan aktivitas, lingkungan gudang, dan perjalanan produk kami.
+					</p>
+					<div
+						class="home-story__photos"
+						role="region"
+						aria-roledescription="carousel"
+						aria-label="Foto aktivitas dan lingkungan — geser untuk melihat lainnya"
+					>
+						{
+							homeStoryPhotos.map(({ src, alt }) => (
+								<figure class="home-story__photo">
+									<img src={src} alt={alt} width="1200" height="750" loading="lazy" decoding="async" />
+								</figure>
+							))
+						}
+					</div>
 
+
+				</div>
+			</div>
+		</section>
 		<!-- CTA Agen -->
 		<section class="home-section home-section--cta-agent" aria-labelledby="agent-heading">
 			<div class="home-wrap home-cta-agent">
