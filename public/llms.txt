@@ -1,0 +1,31 @@
+# mitrabawang.id (onion-web)
+
+## Project Overview
+This project is the source code for [mitrabawang.id](https://mitrabawang.id), an official web platform for a leading supplier and distributor of red onions (bawang merah) based in Grobogan, Central Java, Indonesia. The web platform serves both national and export markets (specifically focusing on exporter-red-onion-shallot-from-indonesia). 
+
+## Technology Stack
+- **Framework**: Astro (v6.1.3)
+- **Node Engine**: >= 22.12.0
+- **Language**: JavaScript/TypeScript, HTML, CSS
+- **Key Integrations**:
+  - `astro-seo`: Used for managing Meta/SEO tags effectively.
+  - `@astrojs/sitemap`: Automatically generates sitemaps.
+  - `astro-icon`: Used for rendering icons seamlessly.
+  - `@iconify-json/simple-icons`: Simple Icons set for `astro-icon`.
+
+## Architecture & Structure
+The project follows standard Astro directory structure:
+- `/src/pages/`: Contains static routes such as `index`, `about`, `harga-bawang-merah-hari-ini` (daily red onion prices), `exporter-red-onion-shallot-from-indonesia`, `privacy-policy`, and `refund-and-returns-policy`.
+- `/src/layouts/`: Contains overarching page layouts like `Layout.astro` which includes the main `<SEO />` tags, SiteHeader, SiteFooter, FloatingWhatsApp, and Google Tag Manager.
+- `/src/components/`: Reusable site UI components.
+- `/public/`: Static assets deployed to the root domain.
+- `astro.config.mjs`: Core configurations, adjusting formatting to avoid duplicate sitemap trailing slashes while maintaining priority mapping.
+
+## Development Commands
+- `npm run dev`: Start local development server.
+- `npm run build`: Build production site using SSG (static site generation) format.
+- `npm run preview`: Preview the production build locally.
+
+## Development Philosophy
+- Prioritizes SEO optimization and high performance through Astro architecture and HTML-first outputs.
+- Target audience is red onion agents, wholesalers, and exporters globally. Web copy uses Bahasa Indonesia for domestic audiences and specific pages in English for export targets.
