@@ -29,7 +29,11 @@ const {
 } = Astro.props;
 
 const base = Astro.site ?? Astro.url.origin;
-const canonical = new URL(Astro.url.pathname, base).href;
+let path = Astro.url.pathname;
+if (path.length > 1 && path.endsWith('/')) {
+	path = path.slice(0, -1);
+}
+const canonical = new URL(path, base).href;
 const ogImage = openGraphImage ?? new URL('/assets/img/emblem.png', base).href;
 const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 ---
