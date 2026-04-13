@@ -6,19 +6,6 @@ import icon from 'astro-icon';
 const site = 'https://mitrabawang.id';
 
 /**
- * URL kanonik halaman publik (trailing slash = format build `directory` bawaan Astro).
- * Dipakai sebagai customPages supaya sitemap tetap mencakup semua halaman penting.
- */
-const publicPageUrls = [
-	`${site}`,
-	`${site}/about`,
-	`${site}/harga-bawang-merah-hari-ini`,
-	`${site}/exporter-red-onion-shallot-from-indonesia`,
-	`${site}/privacy-policy`,
-	`${site}/refund-and-returns-policy`,
-];
-
-/**
  * @param {import('@astrojs/sitemap').SitemapItem} item
  */
 function serializeSitemapItem(item) {
@@ -43,8 +30,14 @@ function serializeSitemapItem(item) {
 		priority = 0.35;
 	}
 
+	// Remove trailing slash for the final URL in sitemap, unless it's just the domain.
+	let finalUrl = item.url;
+	if (finalUrl.length > site.length && finalUrl.endsWith('/')) {
+		finalUrl = finalUrl.slice(0, -1);
+	}
+
 	return {
-		url: item.url,
+		url: finalUrl,
 		links: item.links,
 		priority,
 	};
@@ -53,9 +46,12 @@ function serializeSitemapItem(item) {
 // https://astro.build/config
 export default defineConfig({
 	site,
+	trailingSlash: 'never',
+	build: {
+		format: 'file'
+	},
 	integrations: [
 		sitemap({
-			customPages: publicPageUrls,
 			serialize: serializeSitemapItem,
 			namespaces: {
 				news: false,
