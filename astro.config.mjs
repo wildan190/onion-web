@@ -10,12 +10,12 @@ const site = 'https://mitrabawang.id';
  * Dipakai sebagai customPages supaya sitemap tetap mencakup semua halaman penting.
  */
 const publicPageUrls = [
-	`${site}/`,
-	`${site}/about/`,
-	`${site}/harga-bawang-merah-hari-ini/`,
-	`${site}/exporter-red-onion-shallot-from-indonesia/`,
-	`${site}/privacy-policy/`,
-	`${site}/refund-and-returns-policy/`,
+	`${site}`,
+	`${site}/about`,
+	`${site}/harga-bawang-merah-hari-ini`,
+	`${site}/exporter-red-onion-shallot-from-indonesia`,
+	`${site}/privacy-policy`,
+	`${site}/refund-and-returns-policy`,
 ];
 
 /**
