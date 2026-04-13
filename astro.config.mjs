@@ -46,10 +46,6 @@ function serializeSitemapItem(item) {
 // https://astro.build/config
 export default defineConfig({
 	site,
-	trailingSlash: 'never',
-	build: {
-		format: 'file'
-	},
 	integrations: [
 		sitemap({
 			serialize: serializeSitemapItem,
