@@ -25,7 +25,7 @@ function serializeSitemapItem(item) {
 	if (slug === '/') {
 		priority = 1;
 	} else if (slug === '/harga-bawang-merah-hari-ini') {
-		priority = 0.95;
+		priority = 1.0;
 		changefreq = 'daily';
 		lastmod = new Date().toISOString();
 	} else if (slug === '/about' || slug === '/exporter-red-onion-shallot-from-indonesia') {
