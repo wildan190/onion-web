@@ -44,6 +44,8 @@ function serializeSitemapItem(item) {
 		url: finalUrl,
 		links: item.links,
 		priority,
+		changefreq,
+		lastmod,
 	};
 }
 
