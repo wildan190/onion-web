@@ -19,6 +19,8 @@ function serializeSitemapItem(item) {
 	const slug = pathname.replace(/\/+$/, '') || '/';
 
 	let priority = 0.75;
+	let changefreq = 'weekly';
+	let lastmod = item.lastmod;
 
 	if (slug === '/') {
 		priority = 1;
