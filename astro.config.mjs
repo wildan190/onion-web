@@ -51,6 +51,12 @@ function serializeSitemapItem(item) {
 // https://astro.build/config
 export default defineConfig({
 	site,
+	compress: true,
+	image: {
+		service: {
+			entrypoint: 'astro/assets/services/sharp',
+		},
+	},
 	integrations: [
 		sitemap({
 			serialize: serializeSitemapItem,

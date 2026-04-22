@@ -73,7 +73,7 @@ const priceStructuredData = {
 	],
 };
 <Layout
-	title={`Info Harga Bawang Merah 1 kg Hari ini`}
+	title="Info Harga Bawang Merah 1 kg Hari ini"
 	description={`Informasi harga bawang merah per kg hari ini. Update setiap hari pkl. 10.30 WIB. Grade besar, sedang, kecil.`}
 >
 	<div class="page-shell price-page">
@@ -92,17 +92,17 @@ const priceStructuredData = {
 						<th scope="col">Harga</th>
 					</tr>
 				</thead>
-				<tbody>
-					{
-						priceRows.map(({ grade, berat, harga }) => (
-							<tr>
-								<td>{grade}</td>
-								<td>{berat}</td>
-								<td class="price-table__amount">{harga}</td>
-							</tr>
-						))
-					}
-				</tbody>
+<tbody>
+{
+priceRows.map((row) => (
+<tr>
+<td>{row.grade}</td>
+<td>{row.berat}</td>
+<td>{row.harga}</td>
+</tr>
+))
+}
+</tbody>
 			</table>
 		</div>
 		<section class="price-cta" aria-labelledby="price-cta-title">
