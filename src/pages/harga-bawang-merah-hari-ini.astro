@@ -92,17 +92,15 @@ const priceStructuredData = {
 						<th scope="col">Harga</th>
 					</tr>
 				</thead>
-<tbody>
-{
-priceRows.map((row) => (
-<tr>
-<td>{row.grade}</td>
-<td>{row.berat}</td>
-<td>{row.harga}</td>
-</tr>
-))
-}
-</tbody>
+				<tbody>
+					{priceRows.map((row) => (
+						<tr>
+							<td>{row.grade}</td>
+							<td>{row.berat}</td>
+							<td>{row.harga}</td>
+						</tr>
+					))}
+				</tbody>
 			</table>
 		</div>
 		<section class="price-cta" aria-labelledby="price-cta-title">

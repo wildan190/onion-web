@@ -1,0 +1,9 @@
+				<tbody>
+					{priceRows.map((row) => (
+						<tr>
+							<td>{row.grade}</td>
+							<td>{row.berat}</td>
+							<td>{row.harga}</td>
+						</tr>
+					))}
+				</tbody>
