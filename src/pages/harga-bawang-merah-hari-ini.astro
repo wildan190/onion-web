@@ -72,8 +72,6 @@ const priceStructuredData = {
 		},
 	],
 };
----
-
 <Layout
 	title={`Info Harga Bawang Merah 1 kg Hari ini`}
 	description={`Informasi harga bawang merah per kg hari ini. Update setiap hari pkl. 10.30 WIB. Grade besar, sedang, kecil.`}
@@ -84,7 +82,6 @@ const priceStructuredData = {
 			<span class="price-page__date" id="page-date">{buildDate}</span>
 		</h1>
 		<p class="price-page__meta">Harga bawang merah (brambang) terakhir diperbarui: <span id="meta-date">{buildDate}</span> pkl. 10.30 WIB</p>
-
 		<div class="price-table-wrap">
 			<table class="price-table">
 				<caption class="sr-only">Harga bawang merah hari ini berdasarkan grade</caption>
@@ -108,11 +105,9 @@ const priceStructuredData = {
 				</tbody>
 			</table>
 		</div>
-
 		<section class="price-cta" aria-labelledby="price-cta-title">
 			<div class="price-cta__stripe" aria-hidden="true"></div>
 			<div class="price-cta__body">
-
 				<p class="price-cta__text">
 					ingin membeli bawang merah langsung dari supplier tangan pertama dengan harga grosir?
 				</p>
@@ -141,15 +136,12 @@ const priceStructuredData = {
 				</div>
 			</div>
 		</section>
-
 		<p class="price-page__back">
 			<a href="/">← Kembali ke beranda</a>
 		</p>
-
 		<JsonLd schema={priceStructuredData} />
 	</div>
 </Layout>
-
 <script is:inline>
 	function formatIdDate(d) {
 		return new Intl.DateTimeFormat('id-ID', {
@@ -164,7 +156,7 @@ const priceStructuredData = {
 	var metaEl = document.getElementById('meta-date');
 	if (metaEl) metaEl.textContent = formatIdDate(new Date());
 	document.title =
-		'Info Harga Bawang Merah 1 kg Hari ini — ' + formatIdDate(new Date());
+		'Info Harga Bawang Merah 1 kg Hari ini';
 </script>
 
 <style>
