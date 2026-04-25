@@ -52,10 +52,25 @@ function serializeSitemapItem(item) {
 export default defineConfig({
 	site,
 	compress: true,
+	vite: {
+		build: {
+			minify: 'terser',
+			terserOptions: {
+				compress: {
+					drop_console: true,
+				},
+			},
+		},
+	},
 	image: {
 		service: {
 			entrypoint: 'astro/assets/services/sharp',
 		},
+		remotePatterns: [
+			{
+				protocol: 'https',
+			},
+		],
 	},
 	integrations: [
 		sitemap({
@@ -69,4 +84,8 @@ export default defineConfig({
 		}),
 		icon(),
 	],
+	output: 'static',
+	build: {
+		inlineStylesheets: 'auto',
+	},
 });

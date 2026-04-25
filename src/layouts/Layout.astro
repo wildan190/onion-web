@@ -4,6 +4,7 @@ import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import PerformanceMonitoring from '../components/PerformanceMonitoring.astro';
 
 /** Kata kunci utama situs (bisa dioverride per halaman lewat prop `keywords`). */
 const siteKeywords =
@@ -47,14 +48,54 @@ const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-24QLLECV6D"></script>
+		<script defer async src="https://www.googletagmanager.com/gtag/js?id=G-24QLLECV6D"></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 
-			gtag('config', 'G-24QLLECV6D');
+			gtag('config', 'G-24QLLECV6D', { 'anonymize_ip': true });
 		</script>
+
+		<!-- Critical CSS inline for above-the-fold content -->
+		<style>
+			:root {
+				--color-bg: #faf7f2;
+				--color-surface: #ffffff;
+				--color-text: #1c1917;
+				--color-muted: #57534e;
+				--color-accent: #9f1239;
+				--color-border: #e7e5e4;
+				--font-sans: "DM Sans", system-ui, sans-serif;
+				--max-width: 72rem;
+			}
+			html {
+				scroll-behavior: smooth;
+			}
+			body {
+				margin: 0;
+				font-family: var(--font-sans), sans-serif;
+				font-size: 1.0625rem;
+				line-height: 1.65;
+				color: var(--color-text);
+				background: var(--color-bg);
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				padding-top: 65px;
+			}
+			main {
+				flex: 1;
+				width: 100%;
+				max-width: none;
+				margin: 0;
+				padding: 0;
+			}
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+		</style>
 
 		<SEO
 			title={title}
@@ -89,11 +130,20 @@ const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" as="style" />
+		<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+		<link rel="dns-prefetch" href="https://www.google-analytics.com" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
 			rel="stylesheet"
+			media="print"
+			onload="this.media='all'"
 		/>
+		<noscript>
+			<link
+				href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+				rel="stylesheet"
+			/>
+		</noscript>
 	</head>
 	<body>
 		<SiteHeader />
@@ -102,5 +152,6 @@ const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 		</main>
 		<SiteFooter />
 		<FloatingWhatsApp lang={lang} />
+		<PerformanceMonitoring />
 	</body>
 </html>

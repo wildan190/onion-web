@@ -1,0 +1,23 @@
+<!-- Performance Monitoring & Optimization -->
+<script is:inline>
+  // Measure Core Web Vitals
+  if ('web-vital' in window) {
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        console.log(entry.name, entry.value);
+      }
+    });
+    observer.observe({ entryTypes: ['paint', 'largest-contentful-paint', 'layout-shift', 'navigation'] });
+  }
+
+  // Preload next page on link hover (optional - lightweight)
+  document.addEventListener('mouseover', (e) => {
+    const link = e.target.closest('a[href]');
+    if (link && link.href && link.origin === window.location.origin) {
+      const link_elem = document.createElement('link');
+      link_elem.rel = 'prefetch';
+      link_elem.href = link.href;
+      document.head.appendChild(link_elem);
+    }
+  });
+</script>
