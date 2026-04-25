@@ -1,0 +1,61 @@
+# Enable compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+  AddOutputFilterByType DEFLATE application/rss+xml application/atom+xml image/svg+xml
+</IfModule>
+
+# Set cache headers for assets (hashed files - 1 year)
+<FilesMatch "^.*\.[\da-f]{8}\.(js|css)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </IfModule>
+</FilesMatch>
+
+# Cache images for 30 days
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=604800"
+  </IfModule>
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+</FilesMatch>
+
+# Cache fonts for 1 year
+<FilesMatch "\.(eot|ttf|otf|woff|woff2)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </IfModule>
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+</FilesMatch>
+
+# HTML - shorter cache with must-revalidate
+<FilesMatch "\.html$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=3600, must-revalidate, stale-while-revalidate=86400"
+  </IfModule>
+  ExpiresByType text/html "access plus 1 hour"
+</FilesMatch>
+
+# Browser cache expiration
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+</IfModule>
+
+# Gzip compression for text-based content
+<IfModule mod_gzip.c>
+  mod_gzip_on Yes
+  mod_gzip_dechunk Yes
+  mod_gzip_item_include file \.(html|txt|xml|js|css|svg)$
+  mod_gzip_item_include mime ^text/.*
+  mod_gzip_item_include mime ^application/javascript.*
+  mod_gzip_item_exclude file \.(jpg|jpeg|png|gif|webp|zip)$
+  mod_gzip_item_exclude rn ^Content-Encoding:.*gzip.*
+  mod_gzip_minimum_file_size 512
+</IfModule>
