@@ -25,14 +25,18 @@ const linkItems = links.map(({ href, label }) => ({
 	<header class="site-header">
 		<div class="inner">
 			<a class="brand" href="/" aria-label="mitrabawang.id — beranda">
-				<img
-					class="brand-logo"
-					src="/assets/img/emblem.png"
-					alt=""
-					width="40"
-					height="40"
-					decoding="async"
-				/>
+				<picture>
+					<source srcset="/assets/img/emblem-40.webp" type="image/webp">
+					<img
+						class="brand-logo"
+						src="/assets/img/emblem-40.png"
+						alt=""
+						width="40"
+						height="40"
+						decoding="async"
+						loading="auto"
+					/>
+				</picture>
 				<div class="brand-copy">
 					<span class="brand-text">mitrabawang<span class="tld">.id</span></span>
 					<span class="brand-tagline">Supplier bawang merah tangan pertama &bull; Harga grosir</span>
