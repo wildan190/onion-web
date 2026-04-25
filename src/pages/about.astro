@@ -75,14 +75,17 @@ const aboutStructuredData = {
 			<div class="about-hero__bg" aria-hidden="true"></div>
 			<div class="about-hero__inner">
 				<div class="about-hero__brand">
-					<img
-						class="about-hero__emblem"
-						src="/assets/img/emblem.png"
-						alt=""
-						width="72"
-						height="72"
-						decoding="async"
-					/>
+					<picture>
+						<source srcset="/assets/img/emblem-72.webp" type="image/webp">
+						<img
+							class="about-hero__emblem"
+							src="/assets/img/emblem-72.png"
+							alt=""
+							width="72"
+							height="72"
+							decoding="async"
+						/>
+					</picture>
 					<div class="about-hero__copy">
 						<p class="about-eyebrow">
 							<span class="about-pill">mitrabawang.id</span>
