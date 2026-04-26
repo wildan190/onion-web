@@ -34,7 +34,7 @@ export function websiteId(origin: string): string {
 }
 
 export function logoUrl(origin: string): string {
-	return `${origin}/assets/img/emblem.png`;
+	return `${origin}/assets/img/emblem.webp`;
 }
 
 export function postalAddressBlock() {

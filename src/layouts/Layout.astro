@@ -5,6 +5,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import PerformanceMonitoring from '../components/PerformanceMonitoring.astro';
+import OptimizedAnalytics from '../components/OptimizedAnalytics.astro';
 
 /** Kata kunci utama situs (bisa dioverride per halaman lewat prop `keywords`). */
 const siteKeywords =
@@ -35,7 +36,7 @@ if (path.length > 1 && path.endsWith('/')) {
 	path = path.slice(0, -1);
 }
 const canonical = new URL(path, base).href;
-const ogImage = openGraphImage ?? new URL('/assets/img/emblem.png', base).href;
+const ogImage = openGraphImage ?? new URL('/assets/img/emblem.webp', base).href;
 const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 ---
 
@@ -47,15 +48,7 @@ const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
 		
-		<!-- Google tag (gtag.js) -->
-		<script defer async src="https://www.googletagmanager.com/gtag/js?id=G-24QLLECV6D"></script>
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'G-24QLLECV6D', { 'anonymize_ip': true });
-		</script>
+		<!-- Analytics will be loaded after page interactive (see OptimizedAnalytics component) -->
 
 		<!-- Critical CSS inline for above-the-fold content -->
 		<style>
@@ -153,5 +146,6 @@ const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 		<SiteFooter />
 		<FloatingWhatsApp lang={lang} />
 		<PerformanceMonitoring />
+		<OptimizedAnalytics />
 	</body>
 </html>

@@ -25,14 +25,16 @@ const linkItems = links.map(({ href, label }) => ({
 	<header class="site-header">
 		<div class="inner">
 			<a class="brand" href="/" aria-label="mitrabawang.id — beranda">
-				<img
-					class="brand-logo"
-					src="/assets/img/emblem.png"
-					alt=""
-					width="40"
-					height="40"
-					decoding="async"
-				/>
+				<picture class="brand-logo">
+					<source srcset="/assets/img/emblem-40.webp" type="image/webp" />
+					<img
+						src="/assets/img/emblem-40.png"
+						alt="mitrabawang.id logo"
+						width="40"
+						height="40"
+						decoding="async"
+					/>
+				</picture>
 				<div class="brand-copy">
 					<span class="brand-text">mitrabawang<span class="tld">.id</span></span>
 					<span class="brand-tagline">Supplier bawang merah tangan pertama &bull; Harga grosir</span>
@@ -108,42 +110,53 @@ const linkItems = links.map(({ href, label }) => ({
 </div>
 
 <script>
-	function initMobileNav() {
-		const root = document.querySelector('[data-mobile-nav]');
-		if (!root || root.dataset.navSetup === '1') return;
+	declare global {
+		interface Window {
+			__mbwDrawerEsc?: boolean;
+		}
+	}
 
-		const toggle = root.querySelector('.menu-toggle');
-		const drawer = root.querySelector('[data-drawer]');
-		const panel = root.querySelector('#drawer-panel');
+	function initMobileNav() {
+		const root = document.querySelector('[data-mobile-nav]') as HTMLElement | null;
+		if (!root || (root as any).dataset?.navSetup === '1') return;
+
+		let toggle = root.querySelector('.menu-toggle') as HTMLButtonElement | null;
+		let drawer = root.querySelector('[data-drawer]') as HTMLElement | null;
+		let panel = root.querySelector('#drawer-panel') as HTMLElement | null;
 		const closers = root.querySelectorAll('[data-drawer-close]');
 		const drawerLinks = root.querySelectorAll('[data-drawer-link]');
 
 		if (!toggle || !drawer || !panel) return;
 
-		root.dataset.navSetup = '1';
+		// Type narrowing for nested functions
+		toggle = toggle!;
+		drawer = drawer!;
+		panel = panel!;
 
-		let previouslyFocused = null;
+		(root as any).dataset.navSetup = '1';
+
+		let previouslyFocused: Element | null = null;
 
 		function open() {
 			previouslyFocused = document.activeElement;
-			drawer.classList.add('is-open');
-			root.classList.add('is-drawer-open');
-			drawer.setAttribute('aria-hidden', 'false');
-			toggle.setAttribute('aria-expanded', 'true');
-			toggle.setAttribute('aria-label', 'Tutup menu navigasi');
+			drawer!.classList.add('is-open');
+			root!.classList.add('is-drawer-open');
+			drawer!.setAttribute('aria-hidden', 'false');
+			toggle!.setAttribute('aria-expanded', 'true');
+			toggle!.setAttribute('aria-label', 'Tutup menu navigasi');
 			document.body.classList.add('drawer-open');
-			panel.removeAttribute('inert');
-			panel.focus();
+			panel!.removeAttribute('inert');
+			panel!.focus();
 		}
 
 		function close() {
-			drawer.classList.remove('is-open');
-			root.classList.remove('is-drawer-open');
-			drawer.setAttribute('aria-hidden', 'true');
-			toggle.setAttribute('aria-expanded', 'false');
-			toggle.setAttribute('aria-label', 'Buka menu navigasi');
+			drawer!.classList.remove('is-open');
+			root!.classList.remove('is-drawer-open');
+			drawer!.setAttribute('aria-hidden', 'true');
+			toggle!.setAttribute('aria-expanded', 'false');
+			toggle!.setAttribute('aria-label', 'Buka menu navigasi');
 			document.body.classList.remove('drawer-open');
-			panel.setAttribute('inert', '');
+			panel!.setAttribute('inert', '');
 			if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus();
 		}
 
@@ -163,10 +176,10 @@ const linkItems = links.map(({ href, label }) => ({
 		window.__mbwDrawerEsc = true;
 		document.addEventListener('keydown', (e) => {
 			if (e.key !== 'Escape') return;
-			const drawer = document.querySelector('[data-drawer].is-open');
+			const drawer = document.querySelector('[data-drawer].is-open') as HTMLElement | null;
 			if (!drawer) return;
 			e.preventDefault();
-			const closer = drawer.querySelector('[data-drawer-close]');
+			const closer = drawer.querySelector('[data-drawer-close]') as HTMLElement | null;
 			if (closer instanceof HTMLElement) closer.click();
 		});
 	}
@@ -230,6 +243,12 @@ const linkItems = links.map(({ href, label }) => ({
 		object-fit: contain;
 		flex-shrink: 0;
 		display: block;
+	}
+
+	.brand-logo img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
 	}
 
 	.brand-copy {

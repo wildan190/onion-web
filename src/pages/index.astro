@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SocialIconLinks from '../components/SocialIconLinks.astro';
 import JsonLd from '../components/JsonLd.astro';
+import LazyMaps from '../components/LazyMaps.astro';
 import {
 	logoUrl,
 	orgId,
@@ -305,16 +306,8 @@ const homeStructuredData = {
 						<address class="home-address">
 							{warehouseAddress}
 						</address>
-						<div class="home-map-frame" style="margin-top: 1.25rem;">
-							<iframe
-								title="Peta lokasi gudang mitrabawang.id di Google Maps"
-								src={mapEmbedSrc}
-								width="600"
-								height="350"
-								style="border:0"
-								allowfullscreen=""
-								loading="lazy"
-								referrerpolicy="no-referrer-when-downgrade"></iframe>
+						<div style="margin-top: 1.25rem;">
+							<LazyMaps src={mapEmbedSrc} title="Peta lokasi gudang mitrabawang.id di Google Maps" width="600" height="350" />
 						</div>
 					</div>
 					<div class="home-map-image">
@@ -395,17 +388,7 @@ const homeStructuredData = {
 						<p class="home-proof-card__text">
 							Tinjau lokasi bisnis dan ulasan pelanggan di peta resmi mitrabawang.id.
 						</p>
-						<div class="home-proof-embed">
-							<iframe
-								title="Google Maps — mitrabawang.id (ulasan & lokasi)"
-								src={mapEmbedSrc}
-								width="600"
-								height="320"
-								style="border:0"
-								allowfullscreen=""
-								loading="lazy"
-								referrerpolicy="no-referrer-when-downgrade"></iframe>
-						</div>
+						<LazyMaps src={mapEmbedSrc} title="Google Maps — mitrabawang.id (ulasan & lokasi)" width="600" height="320" />
 						<a class="home-btn home-btn--outline home-btn--full" href="https://maps.app.goo.gl/jxH1LBs7EkQmD9WT9" target="_blank" rel="noopener noreferrer">
 							Buka di Google Maps
 						</a>
