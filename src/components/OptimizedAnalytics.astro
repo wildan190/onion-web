@@ -1,0 +1,31 @@
+---
+// Deferred Google Analytics loading via requestIdleCallback
+// This removes GTM from the critical rendering path
+---
+
+<script is:inline>
+	// Defer GTM loading until page is interactive
+	function loadGTM() {
+		const script = document.createElement('script');
+		script.async = true;
+		script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'; // Replace with your GTM ID
+		document.head.appendChild(script);
+
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-XXXXXXXXXX', { // Replace with your GTM ID
+			anonymize_ip: true,
+			page_path: window.location.pathname,
+		});
+	}
+
+	// Use requestIdleCallback if available, fallback to setTimeout
+	if ('requestIdleCallback' in window) {
+		requestIdleCallback(loadGTM, { timeout: 2000 });
+	} else {
+		window.addEventListener('load', loadGTM);
+	}
+</script>
